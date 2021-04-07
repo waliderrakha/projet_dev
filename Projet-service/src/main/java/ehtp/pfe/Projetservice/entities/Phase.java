@@ -1,5 +1,6 @@
 package ehtp.pfe.Projetservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class Phase {
     private Date dateDebut;
     private Date dateFin;
     private  int nbrJour;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Projet projet;
 

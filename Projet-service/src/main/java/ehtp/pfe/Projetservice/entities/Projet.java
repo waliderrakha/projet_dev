@@ -25,7 +25,7 @@ public class Projet {
     private String active;
     private double budget;
     @OneToMany(mappedBy = "projet")
-   private Collection<Phase> phases;
+    private Collection<Phase> phases;
     private long clientId;
     @Transient
     private Client client;
