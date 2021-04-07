@@ -2,16 +2,20 @@ package ehtp.pfe.Projetservice;
 
 import ehtp.pfe.Projetservice.entities.Phase;
 import ehtp.pfe.Projetservice.entities.Projet;
+import ehtp.pfe.Projetservice.feign.ClientRestClient;
+import ehtp.pfe.Projetservice.model.Client;
 import ehtp.pfe.Projetservice.repository.PhaseRepository;
 import ehtp.pfe.Projetservice.repository.ProjetRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 
 @SpringBootApplication
+@EnableFeignClients
 public class ProjetServiceApplication {
 
 	public static void main(String[] args) {
@@ -19,9 +23,11 @@ public class ProjetServiceApplication {
 	}
 
 	@Bean
-	CommandLineRunner start(ProjetRepository projetRepository, PhaseRepository phaseRepository){return
+	CommandLineRunner start(ProjetRepository projetRepository,
+							PhaseRepository phaseRepository,
+							ClientRestClient clientRestClient){return
 			args -> {
-				Projet p1=projetRepository.save(new Projet(null,"application web","bisness application",new Date(),new Date(),new Date(),"PA","en cours","active",10000,null));
+				/*Projet p1=projetRepository.save(new Projet(null,"application web","bisness application",new Date(),new Date(),new Date(),"PA","en cours","active",10000,null));
 				Projet p2=projetRepository.save(new Projet(null,"projet2","bisness application",new Date(),new Date(),new Date(),"PA","en cours","active",20000,null));
 
 
@@ -32,7 +38,18 @@ public class ProjetServiceApplication {
 
 				projetRepository.findAll().forEach(c
 						->{System.out.println(c.getTitre());}
-				);
+				);*/
+				Client client=clientRestClient.getClientById(1L);
+				System.out.println(client.getEmail());
+				System.out.println(client.getId());
+				System.out.println(client.getAdressLiv());
+				System.out.println(client.getAdressSiege());
+				System.out.println(client.getChefProjet());
+				System.out.println(client.getOrganisation());
+				System.out.println(client.getPays());
+
+
+
 
 			};
 

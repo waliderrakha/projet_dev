@@ -1,5 +1,6 @@
 package ehtp.pfe.Projetservice.entities;
 
+import ehtp.pfe.Projetservice.model.Client;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,4 +26,7 @@ public class Projet {
     private double budget;
     @OneToMany(mappedBy = "projet")
    private Collection<Phase> phases;
+    private long clientId;
+    @Transient
+    private Client client;
 }
