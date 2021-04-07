@@ -1,9 +1,8 @@
 package ehtp.pfe.Projetservice;
 
-import ehtp.pfe.Projetservice.entities.Phase;
-import ehtp.pfe.Projetservice.entities.Projet;
 import ehtp.pfe.Projetservice.feign.ClientRestClient;
 import ehtp.pfe.Projetservice.model.Client;
+import ehtp.pfe.Projetservice.model.Contact;
 import ehtp.pfe.Projetservice.repository.PhaseRepository;
 import ehtp.pfe.Projetservice.repository.ProjetRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -11,8 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-
-import java.util.Date;
 
 @SpringBootApplication
 @EnableFeignClients
@@ -39,6 +36,7 @@ public class ProjetServiceApplication {
 				projetRepository.findAll().forEach(c
 						->{System.out.println(c.getTitre());}
 				);*/
+				System.out.println("***********client-------------------");
 				Client client=clientRestClient.getClientById(1L);
 				System.out.println(client.getEmail());
 				System.out.println(client.getId());
@@ -47,6 +45,15 @@ public class ProjetServiceApplication {
 				System.out.println(client.getChefProjet());
 				System.out.println(client.getOrganisation());
 				System.out.println(client.getPays());
+				System.out.println(client.getContacts());
+
+
+				System.out.println("***********contact-------------------");
+				Contact contact=clientRestClient.getContactById(1L);
+				System.out.println(contact.getId());
+				System.out.println(contact.getClient());
+				System.out.println(contact.getNom());
+				System.out.println(contact.getTel_mobile());
 
 
 

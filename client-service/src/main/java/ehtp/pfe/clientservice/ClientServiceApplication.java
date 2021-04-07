@@ -21,6 +21,7 @@ public class ClientServiceApplication {
 	CommandLineRunner start(ClientRepository clientRepository, ContactRepository contactRepository, RepositoryRestConfiguration restConfiguration) {
 		return args -> {
 			restConfiguration.exposeIdsFor(Client.class);
+			restConfiguration.exposeIdsFor(Contact.class);
 
 			Client client1=clientRepository.save(new Client(null, "EHTP", "20000", "adress1", "adress2", "0696749343",
 					"settat", "maroc", "0696749343", "0696749343", "errakhawaid@gmail.com", "12345", "active",null,"url","info","interne","1234","walid"));

@@ -29,4 +29,5 @@ public class Client {
     private String type;
     private String numContrat;
     private String chefProjet;
+    private Collection<Contact> contacts;
 }
