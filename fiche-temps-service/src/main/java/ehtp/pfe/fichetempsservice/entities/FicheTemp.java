@@ -1,5 +1,6 @@
 package ehtp.pfe.fichetempsservice.entities;
 
+import ehtp.pfe.fichetempsservice.model.SemaineConsultant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +18,8 @@ public class FicheTemp {
     private String statut;
     @OneToMany(mappedBy = "ficheTemp")
     private Collection<LigneFiche> ligneFiches;
+    private Long idSeamineConsultant;
+    @Transient
+    private SemaineConsultant semaineConsultant;
+
 }

@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import java.util.Date;
 
@@ -20,8 +21,17 @@ public class ConsultantServiceApplication {
 		SpringApplication.run(ConsultantServiceApplication.class, args);
 	}
 	@Bean
-	CommandLineRunner start(ConsultantRepository consultantRepository, SemaineRepository semaineRepository, SemaineconsultantRepository semaineconsultantRepository){return
+	CommandLineRunner start(ConsultantRepository consultantRepository,
+							SemaineRepository semaineRepository,
+							SemaineconsultantRepository semaineconsultantRepository,
+							RepositoryRestConfiguration restConfiguration
+
+	){return
 			args -> {
+
+				restConfiguration.exposeIdsFor(Consultant.class);
+				restConfiguration.exposeIdsFor(Semaine.class);
+				restConfiguration.exposeIdsFor(SemaineConsultant.class);
 				Consultant c1=consultantRepository.save(new Consultant(null,"errakha","walid","interne","cl1","0696749343","0696749343","errakhawalid@gmail.com","ingen info","ingenieur d'etat",12));
 				Consultant c2=consultantRepository.save(new Consultant(null,"ait laarbi","mouad","interne","cl1","0696749343","0696749343","errakhawalid@gmail.com","ingen info","ingenieur d'etat",14));
 

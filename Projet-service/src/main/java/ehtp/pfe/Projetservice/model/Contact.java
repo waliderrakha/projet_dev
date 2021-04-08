@@ -1,6 +1,7 @@
 package ehtp.pfe.Projetservice.model;
 
 import lombok.Data;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
