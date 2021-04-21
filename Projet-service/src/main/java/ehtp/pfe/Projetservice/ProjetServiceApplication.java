@@ -12,6 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.RestControllerConfiguration;
 import org.springframework.hateoas.PagedModel;
 
 import java.util.Date;
@@ -27,8 +29,11 @@ public class ProjetServiceApplication {
 	@Bean
 	CommandLineRunner start(ProjetRepository projetRepository,
 							PhaseRepository phaseRepository,
-							ClientRestClient clientRestClient){return
+							ClientRestClient clientRestClient,
+							RepositoryRestConfiguration restConfiguration){return
 			args -> {
+				restConfiguration.exposeIdsFor(Projet.class);
+				restConfiguration.exposeIdsFor(Phase.class);
 
 				System.out.println("***********client-------------------");
 				Client client=clientRestClient.getClientById(1L);
@@ -40,6 +45,7 @@ public class ProjetServiceApplication {
 				System.out.println(client.getOrganisation());
 				System.out.println(client.getPays());
 				System.out.println(client.getContacts());
+				System.out.println(client);
 
 
 				System.out.println("***********contact-------------------");
@@ -51,7 +57,7 @@ public class ProjetServiceApplication {
 
 				System.out.println("***********Projet-------------------");
 
-				Projet p1=projetRepository.save(new Projet(null,"application web","bisness application",new Date(),new Date(),new Date(),"PA","en cours","active",10000,null,client.getId(),null));
+				Projet p1=projetRepository.save(new Projet(null,"application web","bisness application",new Date(),new Date(),new Date(),"PA","en cours","active",10000,null,client.getId(),client));
 				Projet p2=projetRepository.save(new Projet(null,"projet2","bisness application",new Date(),new Date(),new Date(),"PA","en cours","active",20000,null,client.getId(),null));
 
 				System.out.println("***********Phase-------------------");

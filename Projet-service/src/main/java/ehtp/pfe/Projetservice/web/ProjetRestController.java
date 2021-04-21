@@ -29,6 +29,7 @@ public class ProjetRestController {
         Projet projet=projetRepository.findById(id).get();
         Client client=clientRestClient.getClientById(projet.getClientId());
         projet.setClient(client);
+        projetRepository.save(projet);
 
         return  projet;
 

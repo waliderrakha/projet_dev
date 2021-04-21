@@ -1,9 +1,12 @@
 package ehtp.pfe.clientservice.entities;
 
+
+
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,7 +14,7 @@ import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

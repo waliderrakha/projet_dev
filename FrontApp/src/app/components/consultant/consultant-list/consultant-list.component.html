@@ -1,0 +1,16 @@
+<div class="container" *ngIf="ls">
+  <table class="table">
+    <tr>
+      <th>ID</th><th>Nom</th><th>Prenom</th><th>Email</th><th>TeleMobile</th><th>Fonction</th>
+      <th>Type</th>
+    </tr>
+    <app-consultant-item [consutant]="con"
+                         *ngFor="let con of ls._embedded.consultants"
+                         (eventEmitter)="onActionEvent($event)"
+                         style="display: contents"
+    ></app-consultant-item>
+
+  </table>
+
+
+</div>

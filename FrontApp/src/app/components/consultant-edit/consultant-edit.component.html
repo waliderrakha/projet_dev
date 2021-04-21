@@ -1,0 +1,87 @@
+<div class="container" *ngIf="consultantFormGroup">
+  <form [formGroup]="consultantFormGroup">
+    <div class="form-group">
+      <label>ID</label>
+      <input type="text" class="form-control" formControlName="id">
+    </div>
+    <div class="form-group">
+      <label>Nom</label>
+      <input type="text" class="form-control" formControlName="nom"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.nom.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.nom.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.nom.errors.required">Name is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Prenom</label>
+      <input type="text" class="form-control" formControlName="prenom"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.prenom.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.prenom.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.prenom.errors.required">prenom is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Type</label>
+      <input type="text" class="form-control" formControlName="type"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.type.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.type.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.type.errors.required">Name is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <input type="text" class="form-control" formControlName="desc"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.desc.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.desc.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.desc.errors.required">desc is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Tel Mobile</label>
+      <input type="text" class="form-control" formControlName="telMobile"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.telMobile.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.telMobile.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.telMobile.errors.required">telMobile is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Tel Fixe</label>
+      <input type="text" class="form-control" formControlName="telFixe"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.telFixe.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.telFixe.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.telFixe.errors.required">telFixe is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>email</label>
+      <input type="text" class="form-control" formControlName="email"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.email.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.email.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.email.errors.required">email is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Fonction</label>
+      <input type="text" class="form-control" formControlName="fonction"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.fonction.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.fonction.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.fonction.errors.required">fonction is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Formation</label>
+      <input type="text" class="form-control" formControlName="formation"
+             [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.formation.errors}">
+      <div *ngIf="submitted && consultantFormGroup.controls.formation.errors" class="invalid-feedback">
+        <div *ngIf="consultantFormGroup.controls.formation.errors.required">formation is Required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Nombre jour</label>
+      <input type="text" class="form-control" formControlName="nbreJour">
+    </div>
+    <button class="btn btn-success" (click)="onEditConsultant()">Save</button>
+  </form>
+</div>
+
+

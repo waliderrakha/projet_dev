@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
+
 @SpringBootApplication
 public class ClientServiceApplication {
 
@@ -22,6 +23,8 @@ public class ClientServiceApplication {
 		return args -> {
 			restConfiguration.exposeIdsFor(Client.class);
 			restConfiguration.exposeIdsFor(Contact.class);
+			/*restConfiguration.setDefaultMediaType(MediaType.APPLICATION_JSON);
+			restConfiguration.useHalAsDefaultJsonMediaType(false);*/
 
 			Client client1=clientRepository.save(new Client(null, "EHTP", "20000", "adress1", "adress2", "0696749343",
 					"settat", "maroc", "0696749343", "0696749343", "errakhawaid@gmail.com", "12345", "active",null,"url","info","interne","1234","walid"));

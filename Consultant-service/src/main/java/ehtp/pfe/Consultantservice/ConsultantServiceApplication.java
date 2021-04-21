@@ -34,7 +34,7 @@ public class ConsultantServiceApplication {
 				restConfiguration.exposeIdsFor(SemaineConsultant.class);
 				Consultant c1=consultantRepository.save(new Consultant(null,"errakha","walid","interne","cl1","0696749343","0696749343","errakhawalid@gmail.com","ingen info","ingenieur d'etat",12));
 				Consultant c2=consultantRepository.save(new Consultant(null,"ait laarbi","mouad","interne","cl1","0696749343","0696749343","errakhawalid@gmail.com","ingen info","ingenieur d'etat",14));
-
+				Consultant c3=consultantRepository.save(new Consultant(null,"khalid","salah","externe","cl1","0696749343","0696749343","errakhawalid@gmail.com","ingen info","ingenieur d'etat",14));
 
 				Semaine s1=semaineRepository.save(new Semaine(null,"semaine1",new Date(),new Date(),"S1","2021"));
 				Semaine s2=semaineRepository.save(new Semaine(null,"semaine2",new Date(),new Date(),"S1","2021"));

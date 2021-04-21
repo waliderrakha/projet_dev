@@ -1,5 +1,7 @@
 package ehtp.pfe.fichetempsservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import ehtp.pfe.fichetempsservice.model.Phase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +22,12 @@ public class LigneFiche {
     private String desc;
     private String statut;
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private FicheTemp ficheTemp;
+    private Long idPhase;
+    @Transient
+    private Phase phase;
+
 
 
 }

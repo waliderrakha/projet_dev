@@ -1,0 +1,19 @@
+<tr *ngIf="consutant">
+  <td>{{consutant.id}}</td>
+  <td>{{consutant.nom}}</td>
+  <td>{{consutant.prenom}}</td>
+  <td>{{consutant.email}}</td>
+  <td>{{consutant.telMobile}}</td>
+  <td>{{consutant.fonction}}</td>
+  <td>{{consutant.type}}</td>
+  <td>
+    <button class="btn btn-danger" (click)="onDelete(consutant)">
+      <span class="fa fa-trash-o"></span>
+    </button>
+  </td>
+  <td>
+    <button class="btn btn-outline-success" (click)="onEdit(consutant)">
+      <span class="fa fa-edit"></span>
+    </button>
+  </td>
+</tr>
