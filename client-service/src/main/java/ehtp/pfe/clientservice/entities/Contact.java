@@ -24,4 +24,5 @@ public class Contact {
     private String dep;
     @ManyToOne
     private Client client;
+    private long clientID;
 }

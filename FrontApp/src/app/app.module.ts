@@ -13,6 +13,11 @@ import { ConsultantEditComponent } from './components/consultant-edit/consultant
 import { ConsultantNavBarComponent } from './components/consultant/consultant-nav-bar/consultant-nav-bar.component';
 import { ConsultantListComponent } from './components/consultant/consultant-list/consultant-list.component';
 import { ConsultantItemComponent } from './components/consultant/consultant-item/consultant-item.component';
+import { ClientComponent } from './components/client/client.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { ProjetComponent } from './components/projet/projet.component';
+import { PhaseComponent } from './components/phase/phase.component';
+import { AddContactComponent } from './components/contact/add-contact/add-contact.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { ConsultantItemComponent } from './components/consultant/consultant-item
     ConsultantEditComponent,
     ConsultantNavBarComponent,
     ConsultantListComponent,
-    ConsultantItemComponent
+    ConsultantItemComponent,
+    ClientComponent,
+    ContactComponent,
+    ProjetComponent,
+    PhaseComponent,
+    AddContactComponent
   ],
   imports: [
     BrowserModule,

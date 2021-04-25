@@ -1,0 +1,125 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="onGetAllClients()" class="btn btn-sm btn-outline-info ml-2">All</button>
+    </li>
+    <li>
+      <button (click)="onGetSelectedClients()" class="btn btn-sm btn-outline-info ml-2">Selected</button>
+    </li>
+    <li>
+      <button class="btn btn-sm btn-outline-info ml-2">Available</button>
+    </li>
+    <li>
+  </ul>
+  <ul class="navbar navbar-nav ml-auto">
+    <li>
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+        <input ngModel name="keyword"  type="text">
+        <button class="btn btn-sm btn-outline-info ml-2">
+          <span class="fa fa-search"></span>
+        </button>
+      </form>
+    </li>
+  </ul>
+</nav>
+
+<div class="container" >
+      <table *ngIf="ls" class="table table-active" >
+        <tr>
+          <th>ID</th><th>Organisation</th><th>Type</th><th>Tel fixe</th><th>Email</th><th>Status</th>
+        </tr>
+
+        <tr *ngFor="let c of ls._embedded.clients">
+          <td>{{c.id}}</td>
+          <td>{{c.organisation}}</td>
+          <td>{{c.type}}</td>
+          <td>{{c.telFaxe}}</td>
+          <td>{{c.email}}</td>
+          <td>{{c.status}}</td>
+          <td>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="onDelete(c)">
+              <span class="fa fa-trash-o"></span>
+            </button>
+          </td>
+
+        </tr>
+      </table>
+
+</div>
+
+<!--<div class="container" *ngIf="products$">
+  <table class="table">
+    <tr>
+      <th>ID</th><th>Name</th><th>Price</th><th>Quantity</th><th>Selected</th><th>Available</th>
+    </tr>
+    <tr *ngFor="let p of products$ | async">
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.price}}</td>
+      <td>{{p.quantity}}</td>
+      <td>{{p.selected}}</td>
+      <td>{{p.available}}</td>
+
+    </tr>
+  </table>
+
+
+  </div>-->
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+    <ul *ngIf="ls" class="list-group">
+      <li *ngFor="let c of ls._embedded.clients"
+          class="list-group-item"
+          (click)="onGetContacts(c)"
+      >
+     {{c.organisation}}
+      </li>
+
+    </ul>
+
+
+    </div>
+
+
+
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <ul *ngIf="ls" class="list-group">
+        <li *ngFor="let v of contacts._embedded.contacts"
+            class="list-group-item"
+        >
+          {{v.nom}}
+        </li>
+
+
+      </ul>
+
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+-->

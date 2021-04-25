@@ -93,6 +93,7 @@ export class ConsultantComponent implements OnInit {
       case ConsultantActionsTypes.NEW_CONSULTANT:this.onNewConsultants();break;
       case ConsultantActionsTypes.SEARCH_CONSULTANT:this.onSearch($event.payload);break;
       case ConsultantActionsTypes.DELETE_CONSULTANT:this.onDelete($event.payload);break;
+      case ConsultantActionsTypes.EDIT_CONSULTANT:this.onEdit($event.payload);break;
     }
 
   }

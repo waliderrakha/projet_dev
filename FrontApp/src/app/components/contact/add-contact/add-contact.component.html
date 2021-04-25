@@ -1,0 +1,71 @@
+<div class="container pb-xl-5 py-3" *ngIf="clientFormGroup" center>
+  <form class="form-horizontal" [formGroup]="clientFormGroup">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="nom">Nom</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" formControlName="nom" id="nom"
+               [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.nom.errors}">
+        <div *ngIf="submitted && clientFormGroup.controls.nom.errors" class="invalid-feedback">
+          <div *ngIf="clientFormGroup.controls.nom.errors.required">Name is Required</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Prenom</label>
+      <input type="text" class="form-control" formControlName="prenom"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.prenom.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.prenom.errors" class="invalid-feedback">
+        <div *ngIf="clientFormGroup.controls.prenom.errors.required">prenom is Required</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Description</label>
+      <input type="text" class="form-control" formControlName="tel_fixe"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.tel_fixe.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.tel_fixe.errors" class="invalid-feedback">
+        <div *ngIf="clientFormGroup.controls.tel_fixe.errors.required">tel_fixe is Required</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Tel Mobile</label>
+      <input type="text" class="form-control" formControlName="tel_mobile"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.tel_mobile.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.tel_mobile.errors" class="invalid-feedback">
+        <div *ngIf="clientFormGroup.controls.tel_mobile.errors.required">telMobile is Required</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Tel telFixe</label>
+      <input type="text" class="form-control" formControlName="telFixe"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.telFixe.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.telFixe.errors" class="invalid-feedback">
+        <div *ngIf="clientFormGroup.controls.telFixe.errors.required">telFixe is Required</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <label>email</label>
+      <input type="email" class="form-control" formControlName="email" placeholder="Enter email"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.email.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.email.errors" class="invalid-feedback">
+        <div *ngIf="clientFormGroup.controls.email.errors.required">email is Required</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Departement</label>
+      <input type="text" class="form-control" formControlName="dep"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.dep.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.dep.errors" class="invalid-feedback">
+        <div *ngIf="clientFormGroup.controls.dep.errors.required">dep is Required</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Client</label>
+      <select  class="form-control" formControlName="clientID">
+      <option *ngFor="let cli of clients._embedded.clients" value="cli.id">{{cli.organisation}}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success" (click)="onSaveContact()">Enregistrer</button>
+  </form>
+</div>
+
