@@ -13,7 +13,14 @@ export class ClientsService{
     let host=environment.host1;
     return this.http.get<any[]>(host+"/clients");
   }
-
+  findAllClients(){
+    let host=environment.host1;
+    return this.http.get<any[]>(host+"/clients/findAll");
+  }
+  findByIdClients(id:number){
+    let host=environment.host1;
+    return this.http.get<any[]>(host+"/clients/find/"+id);
+  }
   getContacts(c:any){
     return this.http.get(c._links.contacts.href.replace("{?projection}",""));
 

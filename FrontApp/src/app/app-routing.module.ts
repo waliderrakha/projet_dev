@@ -7,6 +7,9 @@ import {ConsultantEditComponent} from './components/consultant-edit/consultant-e
 import {ClientComponent} from './components/client/client.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {AddContactComponent} from './components/contact/add-contact/add-contact.component';
+import {ProjetComponent} from './components/projet/projet.component';
+import {AddProjetComponent} from './components/projet/add-projet/add-projet.component';
+import {AddPhaseComponent} from './components/phase/add-phase/add-phase.component';
 
 const routes: Routes = [
   {path: 'consultant', component: ConsultantComponent},
@@ -15,7 +18,11 @@ const routes: Routes = [
   {path:"",component:HomeComponent},
   {path: 'client', component:ClientComponent },
   {path: 'contact', component:ContactComponent },
-  {path: 'addContact', component:AddContactComponent}
+  {path: 'addContact', component:AddContactComponent},
+  {path: 'projets', component:ProjetComponent},
+  {path: 'addprojet', component:AddProjetComponent},
+  {path: 'addphase', component:AddPhaseComponent}
+
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 package ehtp.pfe.clientservice.repository;
 import ehtp.pfe.clientservice.entities.Contact;
+import jdk.Exported;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 
-@RepositoryRestResource
+@RepositoryRestResource()
 @CrossOrigin("*")
 public interface ContactRepository extends JpaRepository<Contact,Long> {
 

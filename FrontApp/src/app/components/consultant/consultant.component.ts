@@ -24,6 +24,7 @@ export class ConsultantComponent implements OnInit {
     this.ls =this.consultantsService.searchConsultants(dataForm.keyword).subscribe(
       data=>{
         this.ls=data;
+
         console.log(data);
       },error => {
         console.log(error);
@@ -67,6 +68,7 @@ export class ConsultantComponent implements OnInit {
     this.ls =this.consultantsService.getExterneConsultants().subscribe(
       data=>{
         this.ls=data;
+
         console.log(data);
       },error => {
         console.log(error);

@@ -26,11 +26,14 @@ export class ConsultantAddComponent implements OnInit {
       nbreJour:[0,Validators.required],
     });
 
+
   }
 
   onSaveConsultant() {
     this.submitted=true;
     if(this.consultantFormGroup?.invalid) return;
+    //affecter une valeur a un attribut
+    //this.consultantFormGroup?.value.email="dddd";
     this.consultantsService.save(this.consultantFormGroup?.value)
       .subscribe(data=>{
         alert("Success Saving Consulant");

@@ -33,15 +33,15 @@ public class ClientServiceApplication {
 					"casa", "maroc", "0696749343", "0696749343", "errakhawaid@gmail.com", "12345", "active",null,"url","info","interne","1234","walid"));
 
 			Contact contact1=contactRepository.save(new Contact(null,"errakha","walid","0696749343","0696749343",
-					"errakhawalid@gmail.com","info",client1,client1.getId()));
+					"errakhawalid@gmail.com","info",client1));
 			Contact contact3=contactRepository.save(new Contact(null,"errakha","aymane","0696749343","0696749343",
-					"errakhawalid@gmail.com","info",client1,client1.getId()));
+					"errakhawalid@gmail.com","info",client1));
 
 
 			Contact contact2=contactRepository.save(new Contact(null,"Ait larbi","mouad","0696749343",
-					"0696749343","aitlarbimouad@gmail.com","info",client2,client2.getId()));
+					"0696749343","aitlarbimouad@gmail.com","info",client2));
 			Contact contact4=contactRepository.save(new Contact(null,"jarmati","amin","0696749343","0696749343",
-					"errakhawalid@gmail.com","info",client2,client2.getId()));
+					"errakhawalid@gmail.com","info",client2));
 			clientRepository.findAll().forEach(p -> {
 				System.out.println(p.getOrganisation());
 			});

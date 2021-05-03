@@ -18,6 +18,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ProjetComponent } from './components/projet/projet.component';
 import { PhaseComponent } from './components/phase/phase.component';
 import { AddContactComponent } from './components/contact/add-contact/add-contact.component';
+import { AddProjetComponent } from './components/projet/add-projet/add-projet.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AddPhaseComponent } from './components/phase/add-phase/add-phase.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { AddContactComponent } from './components/contact/add-contact/add-contac
     ContactComponent,
     ProjetComponent,
     PhaseComponent,
-    AddContactComponent
+    AddContactComponent,
+    AddProjetComponent,
+    NavbarComponent,
+    AddPhaseComponent
   ],
   imports: [
     BrowserModule,

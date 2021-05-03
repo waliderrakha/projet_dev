@@ -1,0 +1,75 @@
+<div class="row mt" centre>
+
+  <div class="col-lg-8" centre style="padding-left: 500px">
+    <div class="form-panel">
+      <h4 class="mb"><i class="fa fa-angle-right"></i>Ajouter une Phase</h4>
+      <form class="form-horizontal style-form">
+        <div class="form-group">
+          <label class="col-sm-2 col-sm-2 control-label">Titre</label>
+          <div class="col-sm-10">
+            <input type="text" [(ngModel)]="phase.titre" class="form-control" name="titre" id="titre" placeholder="titre projet">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-sm-2 control-label">Description</label>
+          <div class="col-sm-10">
+            <input type="text" [(ngModel)]="phase.desc" class="form-control" name="desc" id="desc" placeholder="description du projet" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 col-sm-2 control-label">Date Debut</label>
+          <div class="col-sm-10">
+            <input type="date" [(ngModel)]="phase.dateDebut" class="form-control" name="dateDebut" id="dateDebut" placeholder="date Debut" >
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-sm-2 col-sm-2 control-label">date Fin</label>
+          <div class="col-sm-10">
+            <input type="date" [(ngModel)]="phase.dateFin" class="form-control" name="dateFin" id="dateFin" placeholder="date Fin" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 col-sm-2 control-label">Code Phase</label>
+          <div class="col-sm-10">
+            <input type="text" [(ngModel)]="phase.code" class="form-control" name="code" id="code" placeholder="code" >
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <label class="col-lg-2 col-sm-2 control-label">Nombre Jour</label>
+          <div class="col-lg-10">
+            <input type="number" [(ngModel)]="phase.nbrJour" class="form-control" name="nbrJour" id="nbrJour" placeholder="nombre Jour">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 col-sm-2 control-label">Projet :</label>
+          <div class="col-lg-10">
+            <select class="form-control" [(ngModel)]="projetId"
+                      name="projetId" id="projetId">
+              <option  [value]=null disabled >Selectionner un Projet </option>
+              <option  *ngFor="let c of projets" [value]="c.id">{{c.titre}}</option>
+
+            </select>
+          </div>
+        </div>
+
+
+        <div class="row" style="">
+          <div class="col-lg-12">
+            <button class="btn-save" (click)="createPhase()">Enregistrer</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

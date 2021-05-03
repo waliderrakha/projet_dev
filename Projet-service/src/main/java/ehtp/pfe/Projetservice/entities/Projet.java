@@ -21,8 +21,8 @@ public class Projet {
     private Date dateFin;
     private Date dateReception;
     private String type;
-    private String statut;
-    private String active;
+    private String statut="Prise en compte";
+    private String active="active";
     private double budget;
     @OneToMany(mappedBy = "projet")
     private Collection<Phase> phases;

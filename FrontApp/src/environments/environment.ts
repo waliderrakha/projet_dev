@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   host:"http://localhost:8083",
-  host1:"http://localhost:8087"
+  host1:"http://localhost:8087",
+  host2:"http://localhost:8084"
 };
 
 /*
