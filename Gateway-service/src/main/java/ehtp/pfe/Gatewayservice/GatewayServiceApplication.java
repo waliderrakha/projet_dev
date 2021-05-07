@@ -24,6 +24,7 @@ public class GatewayServiceApplication {
 		return builder.routes()
 				.route((r)->r.path("/clients/**").uri("lb://CLIENT-SERVICE"))
 				.route(r->r.path("/contacts/**").uri("lb://CONTACT-SERVICE"))
+
 				.build();
 	}
 	@Bean

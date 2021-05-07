@@ -5,15 +5,15 @@
 body{
 
 
-  background-position:center;
-  background-size:cover;
-  font-family:sans-serif;
-  background: rgba(136, 136, 245,245);
+  //background-position:center;
+  //background-size:cover;
+  //font-family:sans-serif;
+  //background: rgba(136, 136, 245,245);
 }
 
 .regform{
   width:800px;
-  background-color:rgb(0,0,0,0.6);
+  background-color: rgba(184, 184, 184, 0.6);
   margin:auto;
   color:#FFFFFF;
   padding:10px 0px 10px 0px;
@@ -177,7 +177,7 @@ form{
   outline:none;
 }
 button{
-  background-color:#3BAF9F;
+  background-color: #174ea8;
   display:block;
   margin:20px 0px 0px 20px;
   text-align:center;

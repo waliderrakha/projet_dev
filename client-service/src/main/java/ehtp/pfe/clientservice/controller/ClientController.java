@@ -1,8 +1,10 @@
 package ehtp.pfe.clientservice.controller;
 
 import ehtp.pfe.clientservice.entities.Client;
+import ehtp.pfe.clientservice.entities.Contact;
 import ehtp.pfe.clientservice.exception.ResourceNotFoundException;
 import ehtp.pfe.clientservice.repository.ClientRepository;
+import ehtp.pfe.clientservice.repository.ContactRepository;
 import ehtp.pfe.clientservice.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,11 @@ import java.util.Optional;
 public class ClientController {
     @Autowired
     ClientService clientService;
+    @Autowired
     ClientRepository clientRepository;
+    @Autowired
+    ContactRepository contactRepository;
+
     @GetMapping(value = "/findAll")
     public List<Client> findAll(){
         return clientService.findAll();
@@ -41,4 +47,11 @@ public class ClientController {
         clientService.save(client);
     }
 
+
+    @PostMapping("/createClientId")
+    public Contact createContact (@RequestBody Contact contact, @RequestParam Long id ) {
+        Client client=clientRepository.findById(id).get();
+        contact.setClient(client);
+        return contactRepository.save(contact);
+    }
 }

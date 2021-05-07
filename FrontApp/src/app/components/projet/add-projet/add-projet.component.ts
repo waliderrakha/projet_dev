@@ -31,6 +31,7 @@ export class AddProjetComponent implements OnInit {
     this.clientsService.findAllClients().subscribe(
       data=>{
         this.clients=data;
+        console.log(this.clients);
       },error => {
         console.log(error);}
     )
@@ -39,6 +40,6 @@ export class AddProjetComponent implements OnInit {
   }
 
   don($event: Event) {
-    
+
   }
 }

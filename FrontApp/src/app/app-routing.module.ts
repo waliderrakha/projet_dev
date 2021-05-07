@@ -10,18 +10,24 @@ import {AddContactComponent} from './components/contact/add-contact/add-contact.
 import {ProjetComponent} from './components/projet/projet.component';
 import {AddProjetComponent} from './components/projet/add-projet/add-projet.component';
 import {AddPhaseComponent} from './components/phase/add-phase/add-phase.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
 
 const routes: Routes = [
   {path: 'consultant', component: ConsultantComponent},
   {path: 'addConsultant', component: ConsultantAddComponent},
   {path: 'editConsultant/:id', component:ConsultantEditComponent },
-  {path:"",component:HomeComponent},
+  {path:"",component:SidebarComponent},
   {path: 'client', component:ClientComponent },
   {path: 'contact', component:ContactComponent },
   {path: 'addContact', component:AddContactComponent},
   {path: 'projets', component:ProjetComponent},
   {path: 'addprojet', component:AddProjetComponent},
-  {path: 'addphase', component:AddPhaseComponent}
+  {path: 'addphase', component:AddPhaseComponent},
+  {path: 'navtest', component:NavbarComponent},
+  {path: 'sidebar', component:SidebarComponent},
+
+
 
 ];
 

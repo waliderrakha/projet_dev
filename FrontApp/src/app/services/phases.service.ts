@@ -17,14 +17,10 @@ export class PhasesServices{
     return this.http.get<any[]>(host+"/phases");
   }
 
-
-  save(projet:Projet):Observable<Projet>{
+  public createPhaseProjet(phase:Phase, id:number){
     let host=environment.host2;
-    return this.http.post<Projet>(host+"/projets/createProjet",projet);
-  }
-  /*public createPhaseProjet(phase:Phase, id:number){
     return this.http.post<Phase>(host+"/createPhaseId?id="+id,phase);
 
-  }*/
+  }
 
 }

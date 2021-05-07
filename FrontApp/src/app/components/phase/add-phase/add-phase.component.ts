@@ -17,13 +17,30 @@ export class AddPhaseComponent implements OnInit {
               private phaseService:PhasesServices) { }
 
   ngOnInit(): void {
+    this.getAllProjets();
   }
 
   createPhase() {
+  console.log(this.projetId);
+  // @ts-ignore
+    this.phaseService.createPhaseProjet(this.phase,this.projetId).subscribe(data=>{
+      alert("Success Saving Phase");
+    });
 
   }
 
   private getAllProjets() {
+    this.projetService.getAllProjet().subscribe(
+      data=>{
+        this.projets=data;
+        console.log(this.projets);
+
+      },
+      error => {
+        console.log(error);
+      }
+
+    )
 
 
   }

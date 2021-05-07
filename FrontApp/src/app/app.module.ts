@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConsultantComponent } from './components/consultant/consultant.component';
@@ -21,6 +20,9 @@ import { AddContactComponent } from './components/contact/add-contact/add-contac
 import { AddProjetComponent } from './components/projet/add-projet/add-projet.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddPhaseComponent } from './components/phase/add-phase/add-phase.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 
 @NgModule({
   declarations: [
@@ -40,14 +42,17 @@ import { AddPhaseComponent } from './components/phase/add-phase/add-phase.compon
     AddContactComponent,
     AddProjetComponent,
     NavbarComponent,
-    AddPhaseComponent
+    AddPhaseComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

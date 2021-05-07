@@ -1,8 +1,8 @@
 .main-sidebar{
   height: 5px;
 
-
 }
+
 .sidebar{
   height: 5px;
 }
@@ -14,11 +14,16 @@
   background-color: white;
   height: 70px;
 }
-
-.wrapper, .content-wrapper {
- background-color: aliceblue;
-  height: 115%;
+#ba3{
+  height: 100px;
+  display: block;
 }
+.wrapper, .content-wrapper {
+  background-color: aliceblue;
+  height: 115%;
+
+}
+
 .brand-link{
   height: 70px;
   padding-left: 35px ;

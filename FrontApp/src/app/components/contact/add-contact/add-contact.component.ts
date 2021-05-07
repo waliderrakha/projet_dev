@@ -18,6 +18,7 @@ export class AddContactComponent implements OnInit {
   submitted:boolean=false;
   // @ts-ignore
   currentProduct;
+  clientId?:number;
   clients:any;
   clients1:any;
   contact?:Contact;
@@ -148,15 +149,23 @@ export class AddContactComponent implements OnInit {
   }
 
   addContact() {
+
+    // @ts-ignore
+    this.clientsService.createContactClient(this.contact,this.clientId).subscribe(
+      data => {
+        console.log("--------------------")
+        console.log(data);
+        alert("contact ajoutée avec succées");}
+    );
     console.log("((((")
-    this.http.post(this.host1 + '/contacts', this.contact).subscribe(
+    /*this.http.post(this.host1 + '/contacts', this.contact).subscribe(
       data => {
         console.log("--------------------")
         console.log(data);
         alert("contact ajoutée avec succées");
       }
 
-    );
+    );*/
 
   }
 
