@@ -85,6 +85,10 @@ export class ConsultantComponent implements OnInit {
     this.router.navigateByUrl("/editConsultant/"+c.id)
 
   }
+  onDetail(c: Consultant) {
+    this.router.navigateByUrl("/detailconsultant/"+c.id)
+
+  }
 
   OnActionEvent($event: ActionEvent) {
     console.log($event.type);
@@ -96,6 +100,7 @@ export class ConsultantComponent implements OnInit {
       case ConsultantActionsTypes.SEARCH_CONSULTANT:this.onSearch($event.payload);break;
       case ConsultantActionsTypes.DELETE_CONSULTANT:this.onDelete($event.payload);break;
       case ConsultantActionsTypes.EDIT_CONSULTANT:this.onEdit($event.payload);break;
+      case ConsultantActionsTypes.DETAIL_CONSULTANT:this.onDetail($event.payload);break;
     }
 
   }

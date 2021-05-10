@@ -24,6 +24,10 @@ export class ConsultantListComponent implements OnInit {
     this.eventEmitter.emit({type:ConsultantActionsTypes.EDIT_CONSULTANT,payload:c});
 
   }
+  onDetait(c: Consultant) {
+    this.eventEmitter.emit({type:ConsultantActionsTypes.DETAIL_CONSULTANT,payload:c});
+
+  }
 
   onActionEvent($event: ActionEvent) {
     this.eventEmitter.emit($event);

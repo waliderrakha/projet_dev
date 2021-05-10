@@ -25,4 +25,9 @@ export class ConsultantItemComponent implements OnInit {
     this.eventEmitter.emit({type:ConsultantActionsTypes.EDIT_CONSULTANT,payload:consutant});
 
   }
+
+  onDetail(consutant: Consultant) {
+    this.eventEmitter.emit({type:ConsultantActionsTypes.DETAIL_CONSULTANT,payload:consutant});
+
+  }
 }

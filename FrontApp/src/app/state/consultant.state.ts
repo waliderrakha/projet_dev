@@ -10,7 +10,8 @@ export enum ConsultantActionsTypes{
   SEARCH_CONSULTANT="[CONSULTANT] Search consultant",
   NEW_CONSULTANT="[CONSULTANT] New consultant",
   DELETE_CONSULTANT="[CONSULTANT] Delete consultant",
-  EDIT_CONSULTANT="[CONSULTANT] Edit consultant"
+  EDIT_CONSULTANT="[CONSULTANT] Edit consultant",
+  DETAIL_CONSULTANT="[CONSULTANT] Detail consultant",
 
 }
 

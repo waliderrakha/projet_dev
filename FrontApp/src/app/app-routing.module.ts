@@ -12,20 +12,28 @@ import {AddProjetComponent} from './components/projet/add-projet/add-projet.comp
 import {AddPhaseComponent} from './components/phase/add-phase/add-phase.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {AddClientComponent} from './components/add-client/add-client.component';
+import {ConsultantDetailComponent} from './components/consultant-detail/consultant-detail.component';
 
 const routes: Routes = [
+  {path: "", component:SidebarComponent,children:[
   {path: 'consultant', component: ConsultantComponent},
   {path: 'addConsultant', component: ConsultantAddComponent},
   {path: 'editConsultant/:id', component:ConsultantEditComponent },
-  {path:"",component:SidebarComponent},
   {path: 'client', component:ClientComponent },
   {path: 'contact', component:ContactComponent },
   {path: 'addContact', component:AddContactComponent},
   {path: 'projets', component:ProjetComponent},
   {path: 'addprojet', component:AddProjetComponent},
   {path: 'addphase', component:AddPhaseComponent},
-  {path: 'navtest', component:NavbarComponent},
-  {path: 'sidebar', component:SidebarComponent},
+  {path: 'navtest', component:SidebarComponent},
+  {path: 'addclient', component:AddClientComponent},
+  {path: 'detailconsultant/:id', component:ConsultantDetailComponent},
+
+
+
+    ]}
+
 
 
 

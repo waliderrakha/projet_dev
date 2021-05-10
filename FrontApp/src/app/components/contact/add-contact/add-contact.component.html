@@ -1,46 +1,68 @@
-<div class="container pb-xl-5 py-3" >
+<div class="row">
+  <div class="col-md-11" style="margin-left: 60px" >
+    <div class="card card-primary">
+      <div class="card-header">
+        <h1 class="card-title">Ajouter Un nouveau Contact</h1>
+      </div>
+      <div class="card-body">
+<div class="col-lg-12" >
+  <div class="form-panel">
   <form #addContactForm="ngForm" (ngSubmit)="saveOrUpdateContact(addContactForm)" *ngIf="contact">
     <div class="form-group" *ngIf="contact">
-      <label class="control-label col-sm-2" for="nom">Nom</label>
-      <div class="col-sm-4" >
-        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="contact.nom">
+      <label class="col-sm-12 control-label" for="nom">Nom</label>
+      <div class="col-sm-11 company">
+        <input type="text" class="form-control" id="nom" name="nom" placeholder="Enter le nom" [(ngModel)]="contact.nom">
       </div>
     </div>
-    <div class="form-group col-sm-4">
-      <label>Prenom</label>
-      <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="contact.prenom">
+    <div class="form-group">
+      <label class="col-sm-12 control-label" >Prenom</label>
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Enter le prenom" [(ngModel)]="contact.prenom">
     </div>
-    <div class="form-group col-sm-4">
-      <label>Tel Mobile</label>
-      <input type="text" class="form-control"  name="telMobile" [(ngModel)]="contact.tel_mobile">
-
     </div>
-    <div class="form-group col-sm-4">
-      <label>Tel telFixe</label>
-      <input type="text" class="form-control"  name="telFixe" [(ngModel)]="contact.tel_fixe">
+    <div class="form-group">
+      <label class="col-sm-12 control-label">Tel Mobile</label>
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control"  name="telMobile" placeholder="saisir le num de telephone mobile" [(ngModel)]="contact.tel_mobile">
+      </div>
     </div>
-    <div class="form-group col-sm-4">
-      <label>email</label>
+    <div class="form-group">
+      <label class="col-sm-12 control-label">Tel telFixe</label>
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control"  name="telFixe" placeholder="saisir le num de telephone Fixe" [(ngModel)]="contact.tel_fixe">
+    </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-12 control-label">email</label>
+      <div class="col-sm-11 company">
       <input type="email" class="form-control"  placeholder="Enter email" name="email" [(ngModel)]="contact.email"
        >
     </div>
-    <div class="form-group col-sm-4">
-      <label>Departement</label>
-      <input type="text" class="form-control" name="dep" [(ngModel)]="contact.dep"
-       >
     </div>
-    <div class="form-group col-sm-4">
-      <label style="margin:1px ;" class="label">Client :</label>
+    <div class="form-group">
+      <label class="col-sm-12 control-label">Departement</label>
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control" name="dep" placeholder="saisir le departement" [(ngModel)]="contact.dep">
+    </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-12 control-label">Client </label>
+      <div class="col-lg-11 company">
       <select   name="client" [(ngModel)]="clientId" class="form-control">
         <option  [value]=null  disabled>Selectionner un Client </option>
         <option  *ngFor="let c of ListClient" [value]="c.id">{{c.organisation}}</option>
 
       </select>
+      </div>
     </div>
 
 
 
-    <button class="btn btn-success"  type="submit">Enregistrer</button>
+    <button class="btn btn-success" style="margin-left: 450px;margin-top: -30px" type="submit">Enregistrer</button>
   </form>
 </div>
-
+      </div>
+    </div>
+  </div>
+</div>
+</div>

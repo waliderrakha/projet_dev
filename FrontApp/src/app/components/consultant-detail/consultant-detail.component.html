@@ -1,0 +1,66 @@
+<div class="wrapper" *ngIf="consultant">
+  <div class="left">
+    <br>
+    <br>
+    <h3>{{consultant.prenom}} {{consultant.nom}} </h3>
+    <h2>{{consultant.fonction}}</h2>
+
+  </div>
+
+  <div class="right">
+
+    <div class="info">
+      <h3> Consultant information</h3>
+      <div class="info_data">
+        <div class="data">
+          <h4>Formation</h4>
+          <p> {{consultant.formation}}</p>
+        </div>
+        <div class="data">
+          <h4>Telephone Mobile</h4>
+          <p> {{consultant.telMobile}}</p>
+        </div>
+        <div class="data">
+          <h4>Email</h4>
+          <p> {{consultant.email}}</p>
+        </div>
+        <div class="data">
+          <h4>Telephone Fixe</h4>
+          <p> {{consultant.telFixe}}</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="projects">
+
+      <h3> Post</h3>
+      <div class="info_data">
+        <div class="data">
+          <h4>Fonction</h4>
+          <p> {{consultant.fonction}}</p>
+        </div>
+        <div class="data">
+          <h4>Type Consultant</h4>
+          <p> {{consultant.type}}</p>
+        </div>
+        <div class="data">
+          <h4>Description</h4>
+          <p> {{consultant.desc}}</p>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+    <a class="btn" style="margin-top: 100px;"  routerLink="/consultant">List Des Consultants
+    </a>
+
+  </div>
+
+
+
+</div>
+

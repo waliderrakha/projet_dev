@@ -1,72 +1,106 @@
-<div class="container pb-xl-5 py-3" *ngIf="consultantFormGroup">
-  <form class="form-horizontal" [formGroup]="consultantFormGroup">
+<div class="row">
+  <div class="col-md-11" style="margin-left: 60px" >
+    <div class="card card-primary">
+      <div class="card-header">
+        <h1 class="card-title">Ajouter Un nouveau Consultant</h1>
+      </div>
+      <div class="card-body">
+        <div class="col-lg-12">
+<div class="form-panel" *ngIf="consultantFormGroup">
+  <form class="form-horizontal style-form" [formGroup]="consultantFormGroup">
     <div class="form-group">
-      <label class="control-label col-sm-2" for="nom">Nom</label>
-      <div class="col-sm-4">
-      <input type="text" class="form-control" formControlName="nom" id="nom"
+      <label class="control-label col-sm- 12" for="nom">Nom</label>
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="entrer le Nom"
              [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.nom.errors}">
       <div *ngIf="submitted && consultantFormGroup.controls.nom.errors" class="invalid-feedback">
         <div *ngIf="consultantFormGroup.controls.nom.errors.required">Name is Required</div>
       </div>
       </div>
     </div>
-    <div class="form-group col-sm-4">
+    <div class="form-group">
       <label>Prenom</label>
-      <input type="text" class="form-control" formControlName="prenom"
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control" formControlName="prenom" placeholder="entrer le Prenom"
              [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.prenom.errors}">
       <div *ngIf="submitted && consultantFormGroup.controls.prenom.errors" class="invalid-feedback">
         <div *ngIf="consultantFormGroup.controls.prenom.errors.required">prenom is Required</div>
       </div>
+      </div>
     </div>
-    <div class="form-group col-sm-4">
+    <div class="form-group">
       <label>Type</label>
+      <div class="col-sm-11 company">
       <select  class="form-control" formControlName="type">
+        <option disabled="disabled" selected>--Choisir le type de Consultant--</option>
         <option value="interne">CONSULTANT INTERNE</option>
         <option value="externe">CONSULTANT EXTERNE</option>
       </select>
     </div>
-    <div class="form-group col-sm-4">
+    </div>
+    <div class="form-group">
       <label>Description</label>
-      <input type="text" class="form-control" formControlName="desc"
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control" formControlName="desc" placeholder="Enter la description"
              [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.desc.errors}">
       <div *ngIf="submitted && consultantFormGroup.controls.desc.errors" class="invalid-feedback">
-        <div *ngIf="consultantFormGroup.controls.desc.errors.required">desc is Required</div>
+        <div *ngIf="consultantFormGroup.controls.desc.errors.required">description is Required</div>
+        <div *ngIf="consultantFormGroup.controls.desc.errors.maxlength">la taille max est 100 caracteres</div>
       </div>
     </div>
-    <div class="form-group col-sm-4">
+    </div>
+    <div class="form-group">
       <label>Tel Mobile</label>
-      <input type="text" class="form-control" formControlName="telMobile"
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control" formControlName="telMobile" placeholder="Enter le Tel Mobile"
              [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.telMobile.errors}">
       <div *ngIf="submitted && consultantFormGroup.controls.telMobile.errors" class="invalid-feedback">
         <div *ngIf="consultantFormGroup.controls.telMobile.errors.required">telMobile is Required</div>
       </div>
     </div>
-    <div class="form-group col-sm-4">
+    </div>
+    <div class="form-group">
       <label>Tel Fixe</label>
-      <input type="text" class="form-control" formControlName="telFixe"
+      <div class="col-sm-11 company">
+      <input type="text" class="form-control" formControlName="telFixe" placeholder="Enter le Tel Fixe"
              [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.telFixe.errors}">
       <div *ngIf="submitted && consultantFormGroup.controls.telFixe.errors" class="invalid-feedback">
         <div *ngIf="consultantFormGroup.controls.telFixe.errors.required">telFixe is Required</div>
       </div>
     </div>
-    <div class="form-group col-sm-4">
+    </div>
+    <div class="form-group">
       <label>email</label>
+      <div class="col-sm-11 company">
       <input type="email" class="form-control" formControlName="email" placeholder="Enter email"
              [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.email.errors}">
       <div *ngIf="submitted && consultantFormGroup.controls.email.errors" class="invalid-feedback">
         <div *ngIf="consultantFormGroup.controls.email.errors.required">email is Required</div>
+        <div *ngIf="consultantFormGroup.controls.email.errors.email">format email non respecter</div>
+      </div>
       </div>
     </div>
-    <div class="form-group col-sm-4">
+    <div class="form-group">
       <label>Fonction</label>
-      <select  class="form-control" formControlName="fonction">
+      <div class="col-sm-11 company">
+      <select  class="form-control" formControlName="fonction"
+               [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.fonction.errors}">
+        <option disabled="disabled" selected>--Choisir Une Fonction--</option>
         <option value="consultant technique">CONSULTANT TECHNIQUE</option>
         <option value="consultant fonctionnel">CONSULTANT FONCTIONNEL</option>
       </select>
+        <div *ngIf="submitted && consultantFormGroup.controls.fonction.errors" class="invalid-feedback">
+          <div *ngIf="consultantFormGroup.controls.fonction.errors.required">fonction is Required</div>
+
+        </div>
     </div>
-    <div class="form-group col-sm-4">
+    </div>
+    <div class="form-group">
       <label>Formation</label>
-      <select  class="form-control" formControlName="formation">
+      <div class="col-sm-11 company">
+      <select  class="form-control" formControlName="formation"
+               [ngClass]="{'is-invalid':submitted && consultantFormGroup.controls.formation.errors}">
+        <option disabled="disabled" selected>--Choisir Une Formation--</option>
         <option value="bac">BAC</option>
         <option value="bac+1">BAC+1</option>
         <option value="bac+2">BAC+2</option>
@@ -74,8 +108,18 @@
         <option value="bac+4">BAC+4</option>
         <option value="bac+5">BAC+5</option>
       </select>
+        <div *ngIf="submitted && consultantFormGroup.controls.formation.errors" class="invalid-feedback">
+          <div *ngIf="consultantFormGroup.controls.formation.errors.required">formation is Required</div>
+
+        </div>
     </div>
-    <button class="btn btn-success" (click)="onSaveConsultant()">Enregistrer</button>
+    </div>
+    <button class="btn btn-success btn1"  (click)="onSaveConsultant()">Enregistrer</button>
+
   </form>
 </div>
-
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

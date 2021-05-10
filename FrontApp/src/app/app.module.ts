@@ -22,6 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddPhaseComponent } from './components/phase/add-phase/add-phase.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AddClientComponent } from './components/add-client/add-client.component';
+import { ConsultantDetailComponent } from './components/consultant-detail/consultant-detail.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AddProjetComponent,
     NavbarComponent,
     AddPhaseComponent,
-    SidebarComponent
+    SidebarComponent,
+    AddClientComponent,
+    ConsultantDetailComponent
   ],
   imports: [
     BrowserModule,
