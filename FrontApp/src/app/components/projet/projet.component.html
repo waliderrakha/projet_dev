@@ -1,71 +1,54 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="onGetAllProjets()" class="btn btn-sm btn-outline-info ml-2"><span><i class="fas fa-list"></i> </span></button>
+    </li>
+  </ul>
+  <ul class="navbar navbar-nav ml-auto">
+    <li>
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+        <input ngModel name="keyword"  type="text">
+        <button class="btn btn-sm btn-outline-info ml-2">
+          <span class="fa fa-search"></span>
+        </button>
+      </form>
+    </li>
+  </ul>
+</nav>
 
-<body>
-<h1 style="padding-top: 10px; padding-left: -100px">
-  Ajouter Un Consultant</h1>
-<div class="regform">
-  <h1>
-    </h1>
+<div class="container" >
+  <div class="activity-card" >
+    <h3>List Projets</h3>
+    <div class="table-responsive">
+      <table *ngIf="ps" class="table" >
+        <thead>
+        <tr>
+          <th>ID</th><th>Type</th><th>Titre</th><th>Active</th><th>Description</th><th>Date Début</th><th>    Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of ps">
+          <td>{{p.id}}</td>
+          <td>{{p.type}}</td>
+          <td>{{p.titre}}</td>
+          <td>{{p.active}}</td>
+          <td>{{p.desc}}</td>
+          <td>{{p.dateDebut}}</td>
+          <td>
+            <button class="btn btn-outline-success"  style="margin-right: 10px">
+              <span><i class="fas fa-pencil-alt"></i></span>
+            </button>
+            <button class="btn btn-info" style="background-color: turquoise;margin-right: 10px" (click)="onDetail(p)">
+              <span><i class="fas fa-info"></i></span>
+            </button>
+            <button class="btn btn-outline-dark" (click)="onPhase(p)">
+              <span><i class="fas fa-address-book"></i></span>
+            </button>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<div class="main">
-
-  <form method="POST">
-    <h2 class="nom">
-      Nom </h2>
-    <input class="company" type="text" name="company">
-    <h2 class="name">
-      Prenom </h2>
-    <input class="company" type="text" name="company">
-    <h2 class="name">
-      Description </h2>
-    <input class="company" type="text" name="company">
-    <h2 class="name">
-      Email</h2>
-    <input class="company" type="email" name="email">
-    <h2 class="name">
-      Telephone fixe</h2>
-    <input class="company" type="text" name="company">
-    <h2 class="name">Telephone Mobile</h2>
-    <input class="company" type="text" name="company">
-    <h2 class="name">
-      Fonction</h2>
-    <select class="option" name="subject">
-      <option disabled="disabled" selected="selected">--Choisir une fonction--</option>
-      <option>Consultant Technique</option>
-      <option>Consultant Fonctionnel</option>
-    </select>
-    <h2 class="name">
-      Formation</h2>
-    <select class="option" name="subject">
-      <option disabled="disabled" selected="selected">--Choisir une formation--</option>
-      <option>BAC</option>
-      <option>BAC+1</option>
-      <option>BAC+2</option>
-      <option>BAC+3</option>
-      <option>BAC+4</option>
-      <option>BAC+5</option>
-      <option>DUT</option>
-      <option>Licence</option>
-      <option>Master</option>
-      <option>Ingenieur D'etat</option>
-    </select>
-    <h2 id="coustomer">
-      Type Consulant</h2>
-    <label class="radio">
-      <input class="radio-one" type="radio" checked="checked" name="rdiobtn">
-      <span class="checkmark"></span>
-      Consultant Interne
-    </label>
-
-    <label class="radio">
-      <input class="radio-two" type="radio" name="rdiobtn">
-      <span class="checkmark"></span>
-      Consultant Externe
-    </label>
-
-    <button type="submit">Enregistrer</button>
-
-
-  </form>
-</div>
-</body>
-

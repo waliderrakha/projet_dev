@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ConsultantsService} from '../../services/consultants.service';
 import {Consultant} from '../../model/consultant.model';
@@ -9,17 +9,18 @@ import {Consultant} from '../../model/consultant.model';
   styleUrls: ['./consultant-detail.component.scss']
 })
 export class ConsultantDetailComponent implements OnInit {
-  consultantId:number;
-  consultant?:Consultant;
-  constructor(private activatedRoute:ActivatedRoute,
-              private consultantsService:ConsultantsService) {
-    this.consultantId=activatedRoute.snapshot.params.id;
+  consultantId: number;
+  consultant?: Consultant;
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private consultantsService: ConsultantsService) {
+    this.consultantId = activatedRoute.snapshot.params.id;
   }
 
   ngOnInit(): void {
     this.consultantsService.getConsultant(this.consultantId).subscribe(
-      data=>
-      {this.consultant=data;
+      data => {
+        this.consultant = data;
         console.log(this.consultant);
         console.log("(((((((")
         console.log(data);

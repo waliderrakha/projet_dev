@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="onGetPhase(projet)" class="btn btn-sm btn-outline-info ml-2"><span><i class="fas fa-list"></i> </span></button>
+    </li>
+  </ul>
+</nav>
+<!--<div class="wrapper" *ngIf="client">
+  <div *ngIf="contacts" >
+    <tr *ngFor="let c of contacts._embedded.contacts">
+      <td>{{c.nom}}</td>
+    </tr>
+  </div>
+</div>-->
+<div class="container" *ngIf="projet" >
+  <h2>Liste Phases :{{projet.titre}} </h2>
+  <div class="activity-card" >
+    <div class="table-responsive">
+      <table *ngIf="phases" class="table" >
+        <thead>
+        <tr>
+          <th>ID</th><th>Titre</th><th>Nbre Jour</th><th>Date Début</th><th>Date Fin</th><th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of phases._embedded.phases">
+          <td>{{p.id}}</td>
+          <td>{{p.titre}}</td>
+          <td>{{p.nbrJour}}</td>
+          <td>{{p.dateDebut}}</td>
+          <td>{{p.dateFin}}</td>
+          <td>{{p.desc}}</td>
+
+
+
+
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

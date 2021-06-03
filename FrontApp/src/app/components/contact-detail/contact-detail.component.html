@@ -1,0 +1,77 @@
+<div class="wrapper" *ngIf="contact">
+  <div class="left" style="background-color: turquoise">
+    <br>
+    <br>
+    <h3 style="font-family: 'Times New Roman';margin-top: 120px;margin-left: 40px">{{contact.nom}}  </h3>
+    <h2 style="font-family: 'Poppins', sans-serif;margin-left: 40px">{{contact.prenom}}</h2>
+
+  </div>
+
+  <div class="right">
+
+    <div class="info">
+      <h3 style="color: turquoise;font-family: 'Poppins', sans-serif"> Informations Projets</h3>
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data">
+          <h4>Email</h4>
+          <p> <B>{{contact.email}}</B></p>
+        </div>
+        <div class="data">
+          <h4>Tél Fixe</h4>
+          <p><B>{{contact.tel_fixe}}</B> </p>
+        </div>
+        <div class="data">
+          <h4>Tél Mobile</h4>
+          <p><B> {{contact.tel_mobile}}</B></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="projects">
+
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data">
+          <div [ngClass]="{'limitTextHeight': isReadMore}">
+
+
+            <h4>Date Fin</h4>
+            <p> <B>{{contact.dep}}</B></p>
+
+
+          </div>
+          <span style="width: 30px;height: 30px" (click)="showText()">
+          {{ isReadMore ? '...': '<' }}
+        </span>
+        </div>
+        <div class="data">
+          <h4>Date Reception</h4>
+          <p><B>{{contact.nom}}</B></p>
+        </div>
+        <div class="data">
+          <h4>Statut</h4>
+          <p> <B>{{contact.nom}}</B></p>
+        </div>
+
+
+
+      </div>
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data">
+          <h4>Titre</h4>
+          <p> <B>{{contact.nom}}</B></p>
+        </div>
+        <div class="data" >
+          <a class="btn" style="margin-left: 50px;margin-top: 0px"  routerLink="/contact"><span><i class="fas fa-backward"></i> </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+</div>

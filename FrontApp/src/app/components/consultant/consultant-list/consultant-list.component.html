@@ -1,16 +1,25 @@
 <div class="container" *ngIf="ls">
-  <table class="table table-striped">
-    <tr>
-      <th>ID</th><th>Nom</th><th>Prenom</th><th>Email</th><th>TeleMobile</th><th>Fonction</th>
-      <th>Type</th>
-    </tr>
-    <app-consultant-item [consutant]="con"
-                         *ngFor="let con of ls._embedded.consultants"
-                         (eventEmitter)="onActionEvent($event)"
-                         style="display: contents"
-    ></app-consultant-item>
+  <div class="activity-card" >
+    <h3>List Consultants</h3>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>TélMobile</th><th>Fonction</th>
+          <th>Type</th><th></th><th>   Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <app-consultant-item [consutant]="con"
+                             *ngFor="let con of ls._embedded.consultants
+                             | paginate: { itemsPerPage:4, currentPage: p } "
+                             (eventEmitter)="onActionEvent($event)"
+                             style="display: contents"
 
-  </table>
-
-
+        ></app-consultant-item>
+        </tbody>
+      </table>
+      <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
 </div>

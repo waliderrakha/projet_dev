@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar navbar-nav">
     <li>
-      <button (click)="onGetAllClients()" class="btn btn-sm btn-outline-info ml-2">All</button>
+      <button (click)="onGetAllClients()" class="btn btn-sm btn-outline-info ml-2"><span><i class="fas fa-list"></i> </span></button>
     </li>
   </ul>
   <ul class="navbar navbar-nav ml-auto">
@@ -17,12 +17,17 @@
 </nav>
 
 <div class="container" >
-      <table *ngIf="ls" class="table table-active" >
+  <div class="activity-card" >
+    <h3>List Clients</h3>
+    <div class="table-responsive">
+      <table *ngIf="ls" class="table" >
+        <thead>
         <tr>
-          <th>ID</th><th>Organisation</th><th>Type</th><th>Tel fixe</th><th>Email</th><th>Status</th>
+          <th>ID</th><th>Organisation</th><th>Type</th><th>Tel fixe</th><th>Email</th><th>Status</th><th>    Actions</th>
         </tr>
-
-        <tr *ngFor="let c of ls._embedded.clients">
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of ls._embedded.clients | paginate: { itemsPerPage:4, currentPage: p } " >
           <td>{{c.id}}</td>
           <td>{{c.organisation}}</td>
           <td>{{c.type}}</td>
@@ -30,16 +35,24 @@
           <td>{{c.email}}</td>
           <td>{{c.status}}</td>
           <td>
-          </td>
-          <td>
-            <button class="btn btn-danger" (click)="onDelete(c)">
-              <span class="fa fa-trash-o"></span>
+            <button class="btn btn-outline-success"  style="margin-right: 10px" (click)="onEdit(c)">
+              <span><i class="fas fa-pencil-alt"></i></span>
+            </button>
+            <button class="btn btn-info" style="background-color: turquoise;margin-right: 10px" (click)="onDetail(c)">
+              <span><i class="fas fa-info"></i></span>
+            </button>
+            <button class="btn btn-outline-dark" (click)="onContact(c)">
+              <span><i class="fas fa-address-book"></i></span>
             </button>
           </td>
 
         </tr>
+        </tbody>
       </table>
+      <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+    </div>
 
+  </div>
 </div>
 
 <!--<div class="container" *ngIf="products$">

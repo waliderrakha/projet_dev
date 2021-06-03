@@ -1,0 +1,78 @@
+<div class="wrapper" *ngIf="client">
+  <div class="left" style="background-color: turquoise">
+    <br>
+    <br>
+    <h3 style="font-family: 'Times New Roman';margin-top: 120px;margin-left: 40px">{{client.organisation}}  </h3>
+    <h2 style="font-family: 'Poppins', sans-serif;margin-left: 40px">{{client.raisonSoc}}</h2>
+
+  </div>
+
+  <div class="right">
+
+    <div class="info">
+      <h3 style="color: turquoise;font-family: 'Poppins', sans-serif"> Informations Clients</h3>
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data">
+          <h4>Chef Projet</h4>
+          <p> <B>{{client.chefProjet}}</B></p>
+        </div>
+        <div class="data">
+          <h4>Fonction</h4>
+          <p><B>{{client.fonction}}</B> </p>
+        </div>
+        <div class="data">
+          <h4>Email</h4>
+          <p><B> {{client.email}}</B></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="projects">
+
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data">
+          <h4>Téléphone Mobile</h4>
+          <p><B>{{client.telMobile}}</B></p>
+        </div>
+        <div class="data">
+          <h4>Adresse Livraison</h4>
+          <p> <B>{{client.adressLiv}}</B></p>
+        </div>
+        <div class="data">
+          <h4>Code Postal</h4>
+          <p> <B>{{client.codePostal}}</B></p>
+        </div>
+
+
+
+
+      </div>
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data">
+          <div [ngClass]="{'limitTextHeight': isReadMore}">
+
+
+            <h4>Adresse Siège</h4>
+            <p> <B>{{client.adressSiege}}</B></p>
+
+
+          </div>
+          <span style="width: 30px;height: 30px" (click)="showText()">
+          {{ isReadMore ? '...': '<' }}
+        </span>
+        </div>
+        <div class="data" >
+          <a class="btn" style="margin-left: 50px;margin-top: 0px"  routerLink="/client"><span><i class="fas fa-backward"></i> </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+</div>

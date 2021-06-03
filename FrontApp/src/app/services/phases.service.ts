@@ -8,18 +8,19 @@ import {Phase} from '../model/phase.model';
 import {host} from '@angular-devkit/build-angular/src/test-utils';
 
 
-@Injectable({providedIn:"root"})
-export class PhasesServices{
-  constructor(private http:HttpClient) {
-  }
-  getAllPhases(){
-    let host=environment.host2;
-    return this.http.get<any[]>(host+"/phases");
+@Injectable({providedIn: "root"})
+export class PhasesServices {
+  constructor(private http: HttpClient) {
   }
 
-  public createPhaseProjet(phase:Phase, id:number){
-    let host=environment.host2;
-    return this.http.post<Phase>(host+"/createPhaseId?id="+id,phase);
+  getAllPhases() {
+    let host = environment.host2;
+    return this.http.get<any[]>(host + "/phases");
+  }
+
+  public createPhaseProjet(phase: Phase, id: number) {
+    let host = environment.host2;
+    return this.http.post<Phase>(host + "/createPhaseId?id=" + id, phase);
 
   }
 

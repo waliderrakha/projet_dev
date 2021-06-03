@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-
+@CrossOrigin("*")
 @RepositoryRestResource
 public interface ProjetRepository extends JpaRepository<Projet,Long> {
     @RestResource(path = "/bytitre")

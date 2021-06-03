@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Client} from '../../model/client.model';
 import {ContactsServices} from '../../services/contacts.service';
 import {Contact} from '../../model/contact.model';
@@ -12,23 +12,25 @@ import {Router} from '@angular/router';
 })
 export class ContactComponent implements OnInit {
   ls: any;
-  clients:any;
+  clients: any;
+  p:number=1;
 
-  constructor(private contactService:ContactsServices,
-              private clientService:ClientsService,
-              private router:Router
-  ) { }
+  constructor(private contactService: ContactsServices,
+              private clientService: ClientsService,
+              private router: Router
+  ) {
+  }
 
   ngOnInit(): void {
     this.getlistClient();
   }
 
   onGetAllContacts() {
-    this.ls =this.contactService.getAllContacts().subscribe(
-      data=>{
-        this.ls=data;
+    this.ls = this.contactService.getAllContacts().subscribe(
+      data => {
+        this.ls = data;
         console.log(data);
-      },error => {
+      }, error => {
         console.log(error);
       }
     )
@@ -36,33 +38,42 @@ export class ContactComponent implements OnInit {
 
   onGetSelectedClients() {
     this.clientService.getAllClients().subscribe(
-      data=>{
-        this.clients=data;
+      data => {
+        this.clients = data;
         console.log(data);
-      },error => {
+      }, error => {
         console.log(error);
       }
-
     )
 
   }
 
-  onSearch(value: any) {
+  onSearch(dataForm: any) {
+    this.ls = this.contactService.searchContacts(dataForm.keyword).subscribe(
+      data => {
+        this.ls = data;
 
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }
+    )
   }
 
   onSelect(client: Client) {
 
   }
-  getlistClient(){
+
+  getlistClient() {
 
 
   }
+
   onDelete(contact: Contact) {
-    let v=confirm("Etes vous sûre?");
-    if(v==true)
+    let v = confirm("Etes vous sûre?");
+    if (v == true)
       this.contactService.deleteContact(contact)
-        .subscribe(data=>{
+        .subscribe(data => {
           this.onGetAllContacts();
         })
 
@@ -74,5 +85,10 @@ export class ContactComponent implements OnInit {
 
   onNewContacts() {
     this.router.navigateByUrl("/addContact")
+  }
+
+  onDetail(c: any) {
+    this.router.navigateByUrl("/detailcontact/"+c.id);
+
   }
 }

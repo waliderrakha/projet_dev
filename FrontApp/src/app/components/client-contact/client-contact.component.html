@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="onGetContact(client)" class="btn btn-sm btn-outline-info ml-2"><span><i class="fas fa-list"></i> </span></button>
+    </li>
+  </ul>
+</nav>
+<!--<div class="wrapper" *ngIf="client">
+  <div *ngIf="contacts" >
+    <tr *ngFor="let c of contacts._embedded.contacts">
+      <td>{{c.nom}}</td>
+    </tr>
+  </div>
+</div>-->
+<div class="container" *ngIf="client" >
+  <h2>Liste Contacts : {{client.organisation}}</h2>
+  <div class="activity-card" >
+    <div class="table-responsive">
+      <table *ngIf="contacts" class="table" >
+        <thead>
+        <tr>
+          <th>ID</th><th>Nom</th><th>Prénom</th><th>Tél fixe</th><th>Tél Mobile</th><th>Email</th><th>Département</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of contacts._embedded.contacts">
+          <td>{{c.id}}</td>
+          <td>{{c.nom}}</td>
+          <td>{{c.prenom}}</td>
+          <td>{{c.tel_fixe}}</td>
+          <td>{{c.tel_mobile}}</td>
+          <td>{{c.email}}</td>
+          <td>{{c.dep}}</td>
+
+
+
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

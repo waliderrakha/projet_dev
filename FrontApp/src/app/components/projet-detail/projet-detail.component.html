@@ -1,0 +1,73 @@
+<div class="wrapper" *ngIf="projet">
+  <div class="left" style="background-color: turquoise">
+    <br>
+    <br>
+    <h3 style="font-family: 'Times New Roman';margin-top: 120px;margin-left: 40px">{{projet.titre}}  </h3>
+    <h2 style="font-family: 'Poppins', sans-serif;margin-left: 40px">{{projet.type}}</h2>
+
+  </div>
+
+  <div class="right">
+
+    <div class="info">
+      <h3 style="color: turquoise;font-family: 'Poppins', sans-serif"> Informations Projets</h3>
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data">
+          <h4>Budget</h4>
+          <p> <B>{{projet.budget}}</B></p>
+        </div>
+        <div class="data">
+          <h4>Description</h4>
+          <p><B>{{projet.desc}}</B> </p>
+        </div>
+        <div class="data">
+          <h4>Date Début</h4>
+          <p><B> {{projet.dateDebut}}</B></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="projects">
+
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data">
+          <div [ngClass]="{'limitTextHeight': isReadMore}">
+
+
+            <h4>Date Fin</h4>
+            <p> <B>{{projet.dateFin}}</B></p>
+
+
+          </div>
+          <span style="width: 30px;height: 30px" (click)="showText()">
+          {{ isReadMore ? '...': '<' }}
+        </span>
+        </div>
+        <div class="data">
+          <h4>Date Reception</h4>
+          <p><B>{{projet.dateReception}}</B></p>
+        </div>
+        <div class="data">
+          <h4>Statut</h4>
+          <p> <B>{{projet.statut}}</B></p>
+        </div>
+
+
+
+      </div>
+      <div class="info_data" style="margin-top: 80px">
+        <div class="data" >
+          <a class="btn" style="margin-left: 570px;margin-top: 0px"  routerLink="/projets"><span><i class="fas fa-backward"></i> </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+</div>

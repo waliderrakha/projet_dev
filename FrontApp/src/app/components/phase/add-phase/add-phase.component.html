@@ -1,81 +1,171 @@
 <div class="row">
-  <div class="col-md-11" style="margin-left: 60px;margin-top: 60px" >
+  <div class="col-md-11" style="margin-left: 60px;" >
     <div class="card card-primary">
-      <div class="card-header">
+      <div class="card-header" style="background-color: turquoise">
         <h1 class="card-title">Ajouter Une nouvelle phase</h1>
       </div>
       <div class="card-body">
-  <div class="col-lg-12">
-    <div class="form-panel">
-      <form class="form-horizontal style-form">
-        <div class="form-group">
-          <label class="col-sm-12 control-label">Titre</label>
-          <div class="col-sm-11 company">
-            <input type="text" [(ngModel)]="phase.titre" class="form-control" name="titre" id="titre" placeholder="titre projet">
+        <div class="col-lg-12">
+          <div class="form-panel" *ngIf="phaseFormGroup">
+            <form class="form-horizontal style-form" [formGroup]="phaseFormGroup">
+              <div class="form-group" style="margin-top: -45px">
+                <div class="form-inline">
+                  <label class="control-label col-sm- 12 ">Projet</label>
+                  <div >
+                    <select class="form-control" formControlName="projetId"
+                            name="projetId" id="projetId" style="width: 270px"
+                            [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.projetId.errors}">
+                      <option  [value]=null disabled >Selectionner un Projet </option>
+                      <option  *ngFor="let c of projets" [value]="c.id">{{c.titre}}</option>
+                      <div *ngIf="submitted && phaseFormGroup.controls.projetId.errors" class="invalid-feedback">
+                        <div *ngIf="phaseFormGroup.controls.projetId.errors.required">champs obligatoire</div>
+                      </div>
+                    </select>
+                  </div>
+                  <label class="control-label col-sm- 12" style="margin-right: 40px;margin-left: 80px" >Titre</label>
+                  <div>
+                    <input type="text" formControlName="titre"  style="width: 300px;" class="form-control" name="titre" id="titre" placeholder="titre projet"
+                           [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.titre.errors}">
+                    <div *ngIf="submitted && phaseFormGroup.controls.titre.errors" class="invalid-feedback">
+                      <div *ngIf="phaseFormGroup.controls.titre.errors.required">champs obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-inline">
+                  <label class="control-label col-sm- 12">Code Phase</label>
+                  <div >
+                    <input type="text" formControlName="code" style="width: 230px" class="form-control" name="code" id="code" placeholder="code"
+                           [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.code.errors}">
+                    <div *ngIf="submitted && phaseFormGroup.controls.code.errors" class="invalid-feedback">
+                      <div *ngIf="phaseFormGroup.controls.code.errors.required">champs obligatoire</div>
+                    </div>
+                  </div>
+                  <label class=" control-label col-sm- 12 " style="margin-left:80px ">Nombre Jour</label>
+                  <div >
+                    <input type="number" style="width: 230px" formControlName="nbrJour" class="form-control" name="nbrJour" id="nbrJour" placeholder="nombre Jour"
+                           [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.nbrJour.errors}">
+                    <div *ngIf="submitted && phaseFormGroup.controls.nbrJour.errors" class="invalid-feedback">
+                      <div *ngIf="phaseFormGroup.controls.nbrJour.errors.required">champs obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-inline">
+                  <label class="control-label col-sm- 12 ">Date Debut</label>
+                  <div >
+                    <input type="date" formControlName="dateDebut" class="form-control" name="dateDebut" id="dateDebut" placeholder="date Debut"
+                           [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.dateDebut.errors}">
+                    <div *ngIf="submitted && phaseFormGroup.controls.dateDebut.errors" class="invalid-feedback">
+                      <div *ngIf="phaseFormGroup.controls.dateDebut.errors.required">champs obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-inline">
+                  <label class="control-label col-sm- 12" style="margin-right: 70px">Date Fin</label>
+                  <div >
+                    <input type="date" formControlName="dateFin" class="form-control" name="dateFin" id="dateFin" placeholder="date Fin"
+                           [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.dateFin.errors}">
+                    <div *ngIf="submitted && phaseFormGroup.controls.dateFin.errors" class="invalid-feedback">
+                      <div *ngIf="phaseFormGroup.controls.dateFin.errors.required">champs obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-inline">
+                  <label class="control-label col-sm- 12" >Description</label>
+                  <div>
+                    <input type="text" formControlName="desc" style="width: 250px" class="form-control" name="desc" id="desc" placeholder="description du projet"
+                           [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.desc.errors}">
+                    <div *ngIf="submitted && phaseFormGroup.controls.desc.errors" class="invalid-feedback">
+                      <div *ngIf="phaseFormGroup.controls.desc.errors.required">champs obligatoire</div>
+                    </div>
+                  </div>
+
+                  <button style="background-color: turquoise;margin-left: 200px;margin-top: 80px" class="btn btn-primary"  (click)="createPhase()">Enregistrer</button>
+                </div>
+              </div>
+              <!--<div class="form-group">
+                <label class="col-sm-12 control-label">Description</label>
+                <div class="col-sm-11 company">
+                  <input type="text" formControlName="desc" class="form-control" name="desc" id="desc" placeholder="description du projet"
+                         [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.desc.errors}">
+                  <div *ngIf="submitted && phaseFormGroup.controls.desc.errors" class="invalid-feedback">
+                    <div *ngIf="phaseFormGroup.controls.desc.errors.required">champs obligatoire</div>
+                  </div>
+                </div>
+              </div>-->
+              <!--<div class="form-group">
+                <label class="col-sm-12 control-label">Date Debut</label>
+                <div class="col-sm-11 company">
+                  <input type="date" formControlName="dateDebut" class="form-control" name="dateDebut" id="dateDebut" placeholder="date Debut"
+                         [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.dateDebut.errors}">
+                  <div *ngIf="submitted && phaseFormGroup.controls.dateDebut.errors" class="invalid-feedback">
+                    <div *ngIf="phaseFormGroup.controls.dateDebut.errors.required">champs obligatoire</div>
+                  </div>
+                </div>
+              </div>-->
+
+
+              <!-- <div class="form-group">
+                 <label class="col-sm-12 control-label">date Fin</label>
+                 <div class="col-sm-11 company">
+                   <input type="date" formControlName="dateFin" class="form-control" name="dateFin" id="dateFin" placeholder="date Fin"
+                          [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.dateFin.errors}">
+                   <div *ngIf="submitted && phaseFormGroup.controls.dateFin.errors" class="invalid-feedback">
+                     <div *ngIf="phaseFormGroup.controls.dateFin.errors.required">champs obligatoire</div>
+                   </div>
+                 </div>
+               </div>-->
+
+              <!--<div class="form-group">
+                <label class="col-sm-12 control-label">Code Phase</label>
+                <div class="col-sm-11 company">
+                  <input type="text" formControlName="code" class="form-control" name="code" id="code" placeholder="code"
+                         [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.code.errors}">
+                  <div *ngIf="submitted && phaseFormGroup.controls.code.errors" class="invalid-feedback">
+                    <div *ngIf="phaseFormGroup.controls.code.errors.required">champs obligatoire</div>
+                  </div>
+                </div>
+              </div>-->
+
+
+
+              <!--
+                            <div class="form-group">
+                              <label class="col-lg-12 control-label">Nombre Jour</label>
+                              <div class="col-lg-11 company">
+                                <input type="number" formControlName="nbrJour" class="form-control" name="nbrJour" id="nbrJour" placeholder="nombre Jour"
+                                       [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.nbrJour.errors}">
+                                <div *ngIf="submitted && phaseFormGroup.controls.nbrJour.errors" class="invalid-feedback">
+                                  <div *ngIf="phaseFormGroup.controls.nbrJour.errors.required">champs obligatoire</div>
+                                </div>
+                              </div>
+                            </div>-->
+
+              <!--<div class="form-group">
+                <label class="col-lg-12 control-label">Projet :</label>
+                <div class="col-lg-11 company">
+                  <select class="form-control" formControlName="projetId"
+                          name="projetId" id="projetId"
+                          [ngClass]="{'is-invalid':submitted && phaseFormGroup.controls.projetId.errors}">
+                    <option  [value]=null disabled >Selectionner un Projet </option>
+                    <option  *ngFor="let c of projets" [value]="c.id">{{c.titre}}</option>
+                    <div *ngIf="submitted && phaseFormGroup.controls.projetId.errors" class="invalid-feedback">
+                      <div *ngIf="phaseFormGroup.controls.projetId.errors.required">champs obligatoire</div>
+                    </div>
+                  </select>
+                </div>
+              </div>-->
+
+
+              <!-- <div class="row" style="">
+                 <div class="col-lg-4" style="margin-left: 450px;margin-top: -30px">
+                   <button class="btn-save" (click)="createPhase()">Enregistrer</button>
+                 </div>
+               </div>-->
+            </form>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-sm-12 control-label">Description</label>
-          <div class="col-sm-11 company">
-            <input type="text" [(ngModel)]="phase.desc" class="form-control" name="desc" id="desc" placeholder="description du projet" >
-          </div>
-        </div>
+      </div>
 
-        <div class="form-group">
-          <label class="col-sm-12 control-label">Date Debut</label>
-          <div class="col-sm-11 company">
-            <input type="date" [(ngModel)]="phase.dateDebut" class="form-control" name="dateDebut" id="dateDebut" placeholder="date Debut" >
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <label class="col-sm-12 control-label">date Fin</label>
-          <div class="col-sm-11 company">
-            <input type="date" [(ngModel)]="phase.dateFin" class="form-control" name="dateFin" id="dateFin" placeholder="date Fin" >
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-12 control-label">Code Phase</label>
-          <div class="col-sm-11 company">
-            <input type="text" [(ngModel)]="phase.code" class="form-control" name="code" id="code" placeholder="code" >
-          </div>
-        </div>
-
-
-
-
-        <div class="form-group">
-          <label class="col-lg-12 control-label">Nombre Jour</label>
-          <div class="col-lg-11 company">
-            <input type="number" [(ngModel)]="phase.nbrJour" class="form-control" name="nbrJour" id="nbrJour" placeholder="nombre Jour">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-12 control-label">Projet :</label>
-          <div class="col-lg-11 company">
-            <select class="form-control" [(ngModel)]="projetId"
-                      name="projetId" id="projetId">
-              <option  [value]=null disabled >Selectionner un Projet </option>
-              <option  *ngFor="let c of projets" [value]="c.id">{{c.titre}}</option>
-
-            </select>
-          </div>
-        </div>
-
-
-        <div class="row" style="">
-          <div class="col-lg-4" style="margin-left: 450px;margin-top: -30px">
-            <button class="btn-save" (click)="createPhase()">Enregistrer</button>
-          </div>
-        </div>
-      </form>
     </div>
   </div>
-</div>
-
-  </div>
-</div>
 </div>

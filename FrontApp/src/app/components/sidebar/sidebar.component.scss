@@ -1,37 +1,54 @@
-.main-sidebar{
+.main-sidebar {
   height: 5px;
 
 }
 
-.sidebar{
+#col {
+  background-color: white;
+}
+
+.sidebar {
   height: 5px;
 }
-.nav{
+
+.nav {
   height: 100%;
 
+
 }
-#mouad{
+
+.nav-link {
+  background-color: turquoise;
+}
+
+.nav-icon {
+  color: black;
+}
+
+#mouad {
   background-color: white;
   height: 70px;
 }
-#ba3{
+
+#ba3 {
   height: 100px;
   display: block;
 }
+
 .wrapper, .content-wrapper {
   background-color: aliceblue;
   height: 115%;
 
 }
 
-.brand-link{
+.brand-link {
   height: 70px;
-  padding-left: 35px ;
+  padding-left: 35px;
   padding-top: 20px;
 
 }
 
-.brand-image{
+.brand-image {
   width: 150px;
 
 }

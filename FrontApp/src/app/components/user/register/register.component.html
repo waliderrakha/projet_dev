@@ -1,0 +1,162 @@
+<form class="form-login">
+  <div class="card card-container" style="margin-left: 450px;margin-top: 100px">
+    <h2 class="form-login-heading" style="margin-left: 120px">créer un compte</h2>
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="login-wrap">
+
+        <div class="form-row">
+
+          <div class="col-6">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              name="email"
+              [(ngModel)]="form.email"
+              placeholder="Email"
+              required
+              email
+              #email="ngModel"
+
+              [class.is-invalid]="email.invalid && email.touched"
+            />
+
+            <div *ngIf="email.errors && (email.invalid || email.touched)">
+              <small class="text-danger" *ngIf="email.errors.required" [class.d-none]=" email.untouched" style="font-size: 11px;"> Email is required</small>
+              <small class="text-danger" *ngIf="email.errors.email" [class.d-none]=" email.untouched" style="font-size: 11px;"> Email must be a valid email address</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="col-6">
+            <label for="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              class="form-control"
+              name="username"
+              [(ngModel)]="form.username"
+              required
+              minlength="3"
+              maxlength="20"
+              #username="ngModel"
+              placeholder="username" autofocus=""
+              [class.is-invalid]="username.invalid && username.touched"
+            />
+
+            <div *ngIf="username.errors && (username.invalid || username.touched)">
+              <small class="text-danger" *ngIf="username.errors.required" [class.d-none]=" username.untouched" style="font-size: 11px;"> Username is required</small>
+              <small class="text-danger" *ngIf="username.errors.minlength" [class.d-none]=" username.untouched" style="font-size: 11px;"> Username must be at least 3 characters</small>
+              <small class="text-danger" *ngIf="username.errors.maxlength" [class.d-none]=" username.untouched" style="font-size: 11px;"> Username must be at most 20 characters</small>
+            </div>
+
+          </div>
+
+        </div>
+        <br>
+        <div class="form-row">
+
+          <div class="form-group col">
+            <label>Role  : </label>
+            <select name = "role"   class="form-control"
+                    placeholder="role"
+                    [(ngModel)]="form.role"
+                    required
+                    #role="ngModel"
+                    [class.is-invalid]="role.invalid && role.touched"
+
+            >
+              <option value="USER" disabled selected>--Choisir Un Role--</option>
+              <option value = "ADMIN">Administrateur</option>
+              <option value = "USER">Utilisateur</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <div class="col-6">
+            <label for="psw">Mot de passe</label>
+            <input
+              id="psw"
+              type="password"
+              class="form-control"
+              name="password"
+              [(ngModel)]="form.password"
+              required
+              minlength="6"
+              #password="ngModel"
+              placeholder="password"
+              [class.is-invalid]="password.invalid && password.touched"
+
+            />
+
+
+            <div *ngIf="password.errors && (password.invalid || password.touched)">
+              <small class="text-danger" *ngIf="password.errors.required" [class.d-none]=" password.untouched" style="font-size: 11px;"> Password is required</small>
+              <small class="text-danger" *ngIf="password.errors.minlength" [class.d-none]=" password.untouched" style="font-size: 11px;"> Password must be at least 6 characters</small>
+            </div>
+
+          </div>
+          <br>
+          <div class="col-6">
+            <label for="pswr">Confirmer le mot de passe</label>
+            <input
+              id="pswr"
+              type="password"
+              class="form-control"
+              name="repassword"
+              [(ngModel)]="form.repassword"
+              required
+              minlength="6"
+              #repassword="ngModel"
+              placeholder="password"
+              [class.is-invalid]="repassword.invalid && repassword.touched"
+
+            />
+
+
+            <div *ngIf="repassword.errors && (repassword.invalid || repassword.touched)">
+              <small class="text-danger" *ngIf="repassword.errors.required" [class.d-none]=" repassword.untouched" style="font-size: 11px;"> Password is required</small>
+              <small class="text-danger" *ngIf="repassword.errors.minlength" [class.d-none]=" repassword.untouched" style="font-size: 11px;"> Password must be at least 6 characters</small>
+            </div>
+            <div *ngIf="repassword.valid && repassword.value != password.value" class="text-danger">
+              The passwords entered do not match
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+        <br>
+        <div>
+          <button class="btn btn-theme btn-block" (click)="onSubmit()" type="button">
+            <i class="fa fa-lock"></i>Enregister</button>
+        </div>
+        <div>
+          <button class="btn btn-danger btn-block" (click)="retour()" type="button" style="margin-top: 10px">
+            <i class="fa fa-lock"></i>Retour</button>
+        </div>
+
+        <div class="alert alert-warning" *ngIf="isSignUpFailed">
+          !<br />{{ errorMessage }}
+        </div>
+      </div>
+    </form>
+
+    <div class="success" *ngIf="isSuccessful">
+      you have successfully registered
+    </div>
+
+  </div>
+
+
+</form>

@@ -3,12 +3,12 @@
     <li>
       <button (click)="onGetAllContacts()" class="btn btn-sm btn-outline-info ml-2">All</button>
     </li>
-    <li>
+    <!--<li>
       <button (click)="onGetSelectedContacts()" class="btn btn-sm btn-outline-info ml-2">Selected</button>
     </li>
     <li>
       <button class="btn btn-sm btn-outline-info ml-2">Available</button>
-    </li>
+    </li>-->
     <li>
       <button (click)="onNewContacts()" class="btn btn-sm btn-outline-info ml-2">Ajouter Contact</button>
     </li>
@@ -27,27 +27,41 @@
 </nav>
 
 <div class="container" >
-  <table class="table" *ngIf="ls!==undefined">
-    <tr>
-      <th>ID</th><th>Nom</th><th>Prenom</th><th>Email</th><th>Departement</th><th>Tel Mobile</th>
-    </tr>
+  <div class="activity-card" >
+    <h3>List Contacts</h3>
+    <div class="table-responsive">
+      <table class="table" *ngIf="ls!==undefined">
+        <thead>
+        <tr>
+          <th>ID</th><th>Nom</th><th>Prenom</th><th>Email</th><th>Departement</th><th>Tel Mobile</th><th>        Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of ls._embedded.contacts | paginate: { itemsPerPage:4, currentPage: p } ">
+          <td>{{c.id}}</td>
+          <td>{{c.nom}}</td>
+          <td>{{c.prenom}}</td>
+          <td>{{c.email}}</td>
+          <td>{{c.dep}}</td>
+          <td>{{c.tel_mobile}}</td>
 
-    <tr *ngFor="let c of ls._embedded.contacts">
-      <td>{{c.id}}</td>
-      <td>{{c.nom}}</td>
-      <td>{{c.prenom}}</td>
-      <td>{{c.email}}</td>
-      <td>{{c.dep}}</td>
-      <td>{{c.tel_mobile}}</td>
-      <td>
-      </td>
-      <td>
-        <button class="btn btn-danger" (click)="onDelete(c)">
-          <span class="fa fa-trash-o"></span>
-        </button>
-      </td>
+          <td>
+            <button class="btn btn-danger" (click)="onDelete(c)" style="margin-right: 10px">
+              <span class="fa fa-trash-alt"></span>
+            </button>
+            <button class="btn btn-outline-success"  style="margin-right: 10px">
+              <span><i class="fas fa-pencil-alt"></i></span>
+            </button>
+            <button class="btn btn-info" style="background-color: turquoise;margin-right: 10px" (click)="onDetail(c)">
+              <span><i class="fas fa-info"></i></span>
+            </button>
 
-    </tr>
-  </table>
+          </td>
 
+        </tr>
+        </tbody>
+      </table>
+      <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {ConsultantsService} from '../../../services/consultants.service';
 import {ClientsService} from '../../../services/clients.service';
@@ -14,38 +14,37 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./add-contact.component.scss']
 })
 export class AddContactComponent implements OnInit {
-  clientFormGroup?:FormGroup;
-  submitted:boolean=false;
+  clientFormGroup?: FormGroup;
+  submitted: boolean = false;
   // @ts-ignore
   currentProduct;
-  clientId?:number;
-  clients:any;
-  clients1:any;
-  contact?:Contact;
- // client?:Client;
-  host1=environment.host1;
+  clientId?: number;
+  clients: any;
+  clients1: any;
+  contact?: Contact;
+  // client?:Client;
+  host1 = environment.host1;
   selectedClient: any;
   ListClient: any;
-  data:any;
-  contacttest?:Contact;
-  contacttest1?:Contact;
-  public prenom?:string;
-  public nom?:string;
-  public tel_mobile?:string;
-  public tel_fixe?:string;
-  public email?:string;
-  public client?:string;
+  data: any;
+  contacttest?: Contact;
+  contacttest1?: Contact;
+  public prenom?: string;
+  public nom?: string;
+  public tel_mobile?: string;
+  public tel_fixe?: string;
+  public email?: string;
+  public client?: string;
 
-  constructor(private fb:FormBuilder, private clientsService:ClientsService,
-              private contactService:ContactsServices,
-              private http:HttpClient) {
-    this.contact=new Contact();
+  constructor(private fb: FormBuilder, private clientsService: ClientsService,
+              private contactService: ContactsServices,
+              private http: HttpClient) {
+    this.contact = new Contact();
     //this.contact.client=new Client();
-    this.contacttest=new Contact();
-   // this.contacttest.client=new Client();
-    this.contacttest1=new Contact();
-   // this.contacttest1.client=new Client();
-
+    this.contacttest = new Contact();
+    // this.contacttest.client=new Client();
+    this.contacttest1 = new Contact();
+    // this.contacttest1.client=new Client();
 
 
   }
@@ -54,28 +53,29 @@ export class AddContactComponent implements OnInit {
     this.ongetAllClients1();
   }
 
-  ongetAllClients(){
+  ongetAllClients() {
     this.clientsService.getAllClients().subscribe(
-    data=>{
-      this.clients=data;
-      // @ts-ignore
-      //this.clientFormGroup?.get(this.client)?.setValue(this.client);
-      //console.log(data);
-    },error => {
-      console.log(error);
+      data => {
+        this.clients = data;
+        // @ts-ignore
+        //this.clientFormGroup?.get(this.client)?.setValue(this.client);
+        //console.log(data);
+      }, error => {
+        console.log(error);
 
-  }
+      }
     )
   }
-  ongetAllClients1(){
+
+  ongetAllClients1() {
     this.clientsService.findAllClients().subscribe(
-      data=>{
-        this.ListClient=data;
+      data => {
+        this.ListClient = data;
         console.log("current client");
-        this.currentProduct=data;
+        this.currentProduct = data;
         //console.log(this.currentProduct._link.self.href);
         console.log(data);
-      },error => {
+      }, error => {
         console.log(error);
 
       }
@@ -87,7 +87,7 @@ export class AddContactComponent implements OnInit {
   do2(evt) {
 
     if (evt.target.value != null) {
-      this.clientsService.findByIdClients(evt.target.value).subscribe( data => {
+      this.clientsService.findByIdClients(evt.target.value).subscribe(data => {
         this.data = data;
         console.log("evvvvvvvvv");
         console.log(evt.target.value);
@@ -142,7 +142,7 @@ export class AddContactComponent implements OnInit {
 
 
         //console.log(this.contact);
-  // console.log(this.selectedClient);
+        // console.log(this.selectedClient);
       });
     }
 
@@ -151,11 +151,12 @@ export class AddContactComponent implements OnInit {
   addContact() {
 
     // @ts-ignore
-    this.clientsService.createContactClient(this.contact,this.clientId).subscribe(
+    this.clientsService.createContactClient(this.contact, this.clientId).subscribe(
       data => {
         console.log("--------------------")
         console.log(data);
-        alert("contact ajoutée avec succées");}
+        alert("contact ajoutée avec succées");
+      }
     );
     console.log("((((")
     /*this.http.post(this.host1 + '/contacts', this.contact).subscribe(
@@ -173,27 +174,28 @@ export class AddContactComponent implements OnInit {
   do(evt) {
     //console.log(evt.target.value);
     // @ts-ignore
-    this.contact?.nom=evt.target.value;
+    this.contact?.nom = evt.target.value;
   }
 
   // @ts-ignore
   do1(evt) {
     //console.log(evt.target.value);
     // @ts-ignore
-    this.contact?.prenom=evt.target.value;
+    this.contact?.prenom = evt.target.value;
 
   }
 
   // @ts-ignore
   do3(evt) {
     // @ts-ignore
-    this.contact?.tel_mobile=evt.target.value;
+    this.contact?.tel_mobile = evt.target.value;
 
   }
+
 // @ts-ignore
   do4(evt) {
     // @ts-ignore
-    this.contact?.tel_fixe=evt.target.value;
+    this.contact?.tel_fixe = evt.target.value;
   }
 
   saveOrUpdateContact(addContactForm: NgForm) {
@@ -232,9 +234,9 @@ export class AddContactComponent implements OnInit {
   // @ts-ignore
   don(evt) {
 
-    console.log(this.host1+"/"+evt.target.value);
+    console.log(this.host1 + "/" + evt.target.value);
     // @ts-ignore
-    this.contact?.client=this.host1+"/"+evt.target.value;
+    this.contact?.client = this.host1 + "/" + evt.target.value;
 
   }
 }

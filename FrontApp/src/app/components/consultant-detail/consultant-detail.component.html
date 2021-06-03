@@ -1,32 +1,28 @@
 <div class="wrapper" *ngIf="consultant">
-  <div class="left">
+  <div class="left" style="background-color: turquoise">
     <br>
     <br>
-    <h3>{{consultant.prenom}} {{consultant.nom}} </h3>
-    <h2>{{consultant.fonction}}</h2>
+    <h3 style="font-family: 'Times New Roman';margin-top: 150px">{{consultant.prenom}} {{consultant.nom}} </h3>
+    <h2 style="font-family: 'Poppins', sans-serif">{{consultant.fonction}}</h2>
 
   </div>
 
   <div class="right">
 
     <div class="info">
-      <h3> Consultant information</h3>
-      <div class="info_data">
+      <h3 style="color: turquoise;font-family: 'Poppins', sans-serif"> Informations Consultants</h3>
+      <div class="info_data" style="margin-top: 100px">
         <div class="data">
           <h4>Formation</h4>
-          <p> {{consultant.formation}}</p>
+          <p><B>{{consultant.formation}}</B></p>
         </div>
         <div class="data">
-          <h4>Telephone Mobile</h4>
-          <p> {{consultant.telMobile}}</p>
+          <h4>Téléphone Mobile</h4>
+          <p><B>{{consultant.telMobile}}</B></p>
         </div>
         <div class="data">
           <h4>Email</h4>
-          <p> {{consultant.email}}</p>
-        </div>
-        <div class="data">
-          <h4>Telephone Fixe</h4>
-          <p> {{consultant.telFixe}}</p>
+          <p><B> {{consultant.email}}</B></p>
         </div>
 
       </div>
@@ -34,33 +30,37 @@
 
     <div class="projects">
 
-      <h3> Post</h3>
-      <div class="info_data">
+      <div class="info_data" style="margin-top: 100px">
+        <div class="data">
+          <h4>Téléphone Fixe</h4>
+          <p><B>{{consultant.telFixe}}</B></p>
+        </div>
         <div class="data">
           <h4>Fonction</h4>
-          <p> {{consultant.fonction}}</p>
+          <p><B>{{consultant.fonction}}</B></p>
         </div>
         <div class="data">
           <h4>Type Consultant</h4>
-          <p> {{consultant.type}}</p>
-        </div>
-        <div class="data">
-          <h4>Description</h4>
-          <p> {{consultant.desc}}</p>
+          <p><B>{{consultant.type}}</B></p>
         </div>
 
 
       </div>
-
+      <div class="info_data" style="margin-top: 50px">
+        <div class="data">
+          <h4>Description</h4>
+          <p><B>{{consultant.desc}}</B></p>
+        </div>
+        <div class="data" >
+          <a class="btn" style="margin-left: 50px;margin-top: 0px"  routerLink="/consultant"><span><i class="fas fa-backward"></i> </span>
+          </a>
+        </div>
+      </div>
 
     </div>
 
-    <a class="btn" style="margin-top: 100px;"  routerLink="/consultant">List Des Consultants
-    </a>
 
   </div>
 
 
-
 </div>
-

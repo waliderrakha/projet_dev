@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
-
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor
+@Data @AllA @NoArgsConstructor
 public class FicheTemp {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String username;
     private int annee;
     private int mois;
     private String statut;

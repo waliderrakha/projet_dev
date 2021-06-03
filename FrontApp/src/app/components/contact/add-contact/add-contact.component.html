@@ -1,68 +1,126 @@
 <div class="row">
   <div class="col-md-11" style="margin-left: 60px" >
     <div class="card card-primary">
-      <div class="card-header">
-        <h1 class="card-title">Ajouter Un nouveau Contact</h1>
+      <div class="card-header" style="background-color: turquoise">
+        <h1 class="card-title" style="color: black"><B>Ajouter Un nouveau Contact</B></h1>
       </div>
       <div class="card-body">
-<div class="col-lg-12" >
-  <div class="form-panel">
-  <form #addContactForm="ngForm" (ngSubmit)="saveOrUpdateContact(addContactForm)" *ngIf="contact">
-    <div class="form-group" *ngIf="contact">
-      <label class="col-sm-12 control-label" for="nom">Nom</label>
-      <div class="col-sm-11 company">
-        <input type="text" class="form-control" id="nom" name="nom" placeholder="Enter le nom" [(ngModel)]="contact.nom">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-12 control-label" >Prenom</label>
-      <div class="col-sm-11 company">
-      <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Enter le prenom" [(ngModel)]="contact.prenom">
-    </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-12 control-label">Tel Mobile</label>
-      <div class="col-sm-11 company">
-      <input type="text" class="form-control"  name="telMobile" placeholder="saisir le num de telephone mobile" [(ngModel)]="contact.tel_mobile">
-      </div>
-    </div>
+        <div class="col-lg-12" >
+          <div class="form-panel">
+            <form #addContactForm="ngForm" (ngSubmit)="saveOrUpdateContact(addContactForm)" *ngIf="contact">
+              <div class="form-group" style="margin-top: -30px" *ngIf="contact">
+                <div class="form-inline">
+                  <label class="control-label col-sm- 12" >Client </label>
+                  <div>
+                    <select   name="client" [(ngModel)]="clientId" class="form-control">
+                      <option  [value]=null  disabled selected >Selectionner un Client </option>
+                      <option  *ngFor="let c of ListClient" [value]="c.id">{{c.organisation}}</option>
+
+                    </select>
+                  </div>
+                  <label class="control-label col-sm- 12" for="nom" id="left">Nom</label>
+                  <div>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Enter le Nom" [(ngModel)]="contact.nom">
+                  </div>
+
+                </div>
+                <div class="form-inline" id="ana6" >
+                  <label class="control-label col-sm- 12" >Prenom</label>
+                  <div >
+                    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Enter le Prénom" [(ngModel)]="contact.prenom">
+                  </div>
+                  <label class="control-label col-sm- 12" style="margin-right: 30px;margin-left: 80px">Email</label>
+                  <div >
+                    <div class="input-group mb-3" id="" >
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                      </div>
+                      <input type="email" class="form-control" style="width: 270px"  placeholder="Enter email" name="email" [(ngModel)]="contact.email"
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="form-inline" id="ana">
+                  <label class="control-label col-sm- 12">Tél Mobile</label>
+                  <div>
+                    <div class="input-group mb-3" id="ana1" >
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                      </div>
+                      <input type="text" class="form-control"  name="telMobile" placeholder="saisir le num de telephone mobile" [(ngModel)]="contact.tel_mobile">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-inline" id="ana3">
+                  <label class="control-label col-sm- 12" style="margin-top: 0px;margin-right:55px">Tél Fixe</label>
+                  <div>
+                    <div class="input-group mb-3" id="ana2" >
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                      </div>
+                      <input type="text" class="form-control"  name="telFixe" placeholder="saisir le num de telephone Fixe" [(ngModel)]="contact.tel_fixe">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-inline" id="ana5">
+                  <label class="control-label col-sm- 12" style="margin-left: 0px">Département</label>
+                  <div >
+                    <input type="text" class="form-control" style="width: 290px" name="dep" placeholder="saisir le departement" [(ngModel)]="contact.dep">
+                  </div>
+                  <button class="btn btn-success" style="margin-left: 600px;margin-top: -50px; background-color: turquoise" type="submit">Enregistrer</button>
+
+                </div>
+
+              </div>
+              <!--<div class="form-group">
+                <label class="col-sm-12 control-label" >Prenom</label>
+                <div class="col-sm-11 company">
+                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Enter le prenom" [(ngModel)]="contact.prenom">
+              </div>
+              </div>-->
+              <!--<div class="form-group">
+                <label class="col-sm-12 control-label">Tel Mobile</label>
+                <div class="col-sm-11 company">
+                <input type="text" class="form-control"  name="telMobile" placeholder="saisir le num de telephone mobile" [(ngModel)]="contact.tel_mobile">
+                </div>
+              </div>--><!--
     <div class="form-group">
       <label class="col-sm-12 control-label">Tel telFixe</label>
       <div class="col-sm-11 company">
       <input type="text" class="form-control"  name="telFixe" placeholder="saisir le num de telephone Fixe" [(ngModel)]="contact.tel_fixe">
     </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-12 control-label">email</label>
-      <div class="col-sm-11 company">
-      <input type="email" class="form-control"  placeholder="Enter email" name="email" [(ngModel)]="contact.email"
-       >
-    </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-12 control-label">Departement</label>
-      <div class="col-sm-11 company">
-      <input type="text" class="form-control" name="dep" placeholder="saisir le departement" [(ngModel)]="contact.dep">
-    </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-12 control-label">Client </label>
-      <div class="col-lg-11 company">
-      <select   name="client" [(ngModel)]="clientId" class="form-control">
-        <option  [value]=null  disabled>Selectionner un Client </option>
-        <option  *ngFor="let c of ListClient" [value]="c.id">{{c.organisation}}</option>
+    </div>-->
+              <!--<div class="form-group">
+                <label class="col-sm-12 control-label">email</label>
+                <div class="col-sm-11 company">
+                <input type="email" class="form-control"  placeholder="Enter email" name="email" [(ngModel)]="contact.email"
+                 >
+              </div>
+              </div>-->
+              <!--<div class="form-group">
+                <label class="col-sm-12 control-label">Departement</label>
+                <div class="col-sm-11 company">
+                <input type="text" class="form-control" name="dep" placeholder="saisir le departement" [(ngModel)]="contact.dep">
+              </div>
+              </div>-->
+              <!--<div class="form-group">
+                <label class="col-sm-12 control-label">Client </label>
+                <div class="col-lg-11 company">
+                <select   name="client" [(ngModel)]="clientId" class="form-control">
+                  <option  [value]=null  disabled>Selectionner un Client </option>
+                  <option  *ngFor="let c of ListClient" [value]="c.id">{{c.organisation}}</option>
 
-      </select>
-      </div>
-    </div>
+                </select>
+                </div>
+              </div>-->
 
 
 
-    <button class="btn btn-success" style="margin-left: 450px;margin-top: -30px" type="submit">Enregistrer</button>
-  </form>
-</div>
+
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

@@ -1,0 +1,143 @@
+<!--
+<body class="bg-gradient-primary">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-8 col-lg-10 col-md-7">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <div class="row">
+            <div class="col-lg-4 justify-content-center">
+              <img src="assets/login/img/login8.jpg" class="img-circle " alt="User Image">
+            </div>
+            <div class="alert alert-danger" *ngIf="mode==1">
+              <strong>Bad credentials ...</strong>
+            </div>
+            <div class="col-lg-8">
+              <div class="p-5" *ngIf="loginForm">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Connection</h1>
+                </div>
+                <form class = "user" [formGroup]="this.loginForm" (ngSubmit)="login()">
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control sty1"  id="username" formControlName="username" placeholder="Taper your login" required>
+                  </div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password" class="form-control sty1"  id="password" formControlName="password" placeholder="Taper your Passward" required>
+                  </div>
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                      <input type="checkbox" class="custom-control-input" id="customCheck">
+                      <label class="custom-control-label" for="customCheck">Remember Me</label>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-user btn-block">Login</button>
+                  <hr>
+                </form>
+                <hr>
+                <div class="text-center">
+                  <a class="small" href="">Forgot Password?</a>
+                </div>
+                <div class="text-center">
+                  <a class="small" href="">Create an Account!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+-->
+<form class="form-login">
+  <div class="card card-container"  style="margin-left: 450px;margin-top: 150px">
+    <h2 class="form-login-heading" style="margin-left: 80px">Se Connecter</h2>
+
+
+    <!--<i class="fas fa-sign-in-alt" style="margin-left: 90px"></i>-->
+
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="login-wrap">
+        <div>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+            placeholder="Username" autofocus=""
+            [class.is-invalid]="username.invalid && username.touched"
+          />
+          <div *ngIf="username.errors && (username.invalid || username.touched)">
+            <small class="text-danger" *ngIf="username.errors.required" [class.d-none]=" username.untouched" style="font-size: 11px;"> Username is required</small>
+            <small class="text-danger" *ngIf="username.errors.minlength" [class.d-none]=" username.untouched" style="font-size: 11px;"> Username must be at least 3 characters</small>
+            <small class="text-danger" *ngIf="username.errors.maxlength" [class.d-none]=" username.untouched" style="font-size: 11px;"> Username must be at most 20 characters</small>
+          </div>
+
+        </div>
+        <br>
+        <div>
+
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="4"
+            #password="ngModel"
+            [class.is-invalid]="password.invalid && password.touched"
+            placeholder="Password"
+          />
+
+          <div *ngIf="password.errors && (password.invalid || password.touched)">
+            <small class="text-danger" *ngIf="password.errors.required" [class.d-none]=" password.untouched" style="font-size: 11px;"> Password is required</small>
+            <small class="text-danger" *ngIf="password.errors.minlength" [class.d-none]=" password.untouched" style="font-size: 11px;"> Password must be at least 6 characters</small>
+          </div>
+
+
+        </div>
+        <div>
+          <div>
+            <label class="checkbox">
+              <input type="checkbox" value="remember-me"><h3> Remember me</h3>
+
+            </label>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-theme btn-block" (click)="onSubmit()" type="button">
+            <i class="fa fa-lock"></i> Connexion
+          </button>
+        </div>
+        <hr>
+
+
+        <div class="form-group">
+          <div class="alert alert-danger" *ngIf="mode==1">
+            <strong>Bad credentials ...</strong>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+</form>

@@ -8,24 +8,28 @@ import {Consultant} from '../../../model/consultant.model';
   styleUrls: ['./consultant-list.component.scss']
 })
 export class ConsultantListComponent implements OnInit {
-  @Input() ls:any;
-  @Output() eventEmitter: EventEmitter<ActionEvent>= new EventEmitter();
-  constructor() { }
+  p:number=1;
+  @Input() ls: any;
+  @Output() eventEmitter: EventEmitter<ActionEvent> = new EventEmitter();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
   onDelete(c: Consultant) {
-    this.eventEmitter.emit({type:ConsultantActionsTypes.DELETE_CONSULTANT,payload:c});
+    this.eventEmitter.emit({type: ConsultantActionsTypes.DELETE_CONSULTANT, payload: c});
 
   }
 
   onEdit(c: Consultant) {
-    this.eventEmitter.emit({type:ConsultantActionsTypes.EDIT_CONSULTANT,payload:c});
+    this.eventEmitter.emit({type: ConsultantActionsTypes.EDIT_CONSULTANT, payload: c});
 
   }
+
   onDetait(c: Consultant) {
-    this.eventEmitter.emit({type:ConsultantActionsTypes.DETAIL_CONSULTANT,payload:c});
+    this.eventEmitter.emit({type: ConsultantActionsTypes.DETAIL_CONSULTANT, payload: c});
 
   }
 

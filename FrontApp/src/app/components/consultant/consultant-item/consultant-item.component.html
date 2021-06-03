@@ -12,13 +12,16 @@
     </button>-->
   </td>
   <td>
-    <button class="btn btn-outline-success" (click)="onEdit(consutant)" style="margin-left:5px">
-      Modifier
+    <button class="btn btn-outline-success" (click)="onEdit(consutant)" style="margin-right: 10px">
+      <span><i class="fas fa-pencil-alt"></i></span>
+    </button>
+    <button class="btn btn-info" style="background-color: turquoise" (click)="onDetail(consutant)">
+      <span><i class="fas fa-info"></i></span>
     </button>
   </td>
-  <td>
-    <button class="btn btn-info" style="margin-left: 10px" (click)="onDetail(consutant)">
+  <!--<td>
+    <button class="btn btn-info" style="background-color: turquoise" (click)="onDetail(consutant)">
       Detail
     </button>
-  </td>
+  </td>-->
 </tr>
