@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 const AUTH_API = 'http://localhost:8080';
 import {user} from '../model/user.model';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -43,7 +44,7 @@ islogin=false;
 
       // @ts-ignore
       localStorage.setItem('role',this.roles);
-      
+
       localStorage.setItem('userauth',this.userauth);
     console.log(this.roles);
     console.log("decode--------------");
@@ -72,6 +73,7 @@ islogin=false;
     // remove user from local storage and set current user to null
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    localStorage.removeItem('userauth');
     this.router.navigate(["/login"]);
 
   }
@@ -103,6 +105,19 @@ islogin=false;
       password: user.password
     },{headers:new HttpHeaders({'Authorization':this.jwtToken})});
   }
+
+  //change password
+  updatePassword( username: String, oldPass: String, newPass: String ) {
+    const addBody = {
+      'username': username,
+      'oldPass': oldPass,
+      'newPass': newPass
+    } ;
+
+    return  this.http.post<user>("http://localhost:8080/updatePassword", addBody);
+  }
+  //toaster
+
 
 
 }

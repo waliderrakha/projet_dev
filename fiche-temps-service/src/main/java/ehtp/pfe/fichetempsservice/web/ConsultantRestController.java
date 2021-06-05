@@ -5,10 +5,11 @@ import ehtp.pfe.fichetempsservice.Repository.LigneFicheRepository;
 import ehtp.pfe.fichetempsservice.entities.FicheTemp;
 import ehtp.pfe.fichetempsservice.fiegn.ConsultantRestClient;
 import ehtp.pfe.fichetempsservice.model.SemaineConsultant;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
+@CrossOrigin("*")
 @RestController
 public class ConsultantRestController {
 
@@ -28,6 +29,7 @@ public class ConsultantRestController {
 
         SemaineConsultant sc=consultantRestClient.getSemainConsulatantById(fiche.getIdSeamineConsultant());
         fiche.setSemaineConsultant(sc);
+        ficheTempRepository.save(fiche);
 
         return  fiche;
 

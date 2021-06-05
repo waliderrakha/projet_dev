@@ -46,7 +46,11 @@ else {
             }
             else if (request.getServletPath().equals("/refreshToken")) {
                 filterChain.doFilter(request, response);
-            } else {
+            }
+            else if (request.getServletPath().equals("/updatePassword")) {
+                filterChain.doFilter(request, response);
+            }
+            else {
 
                 String authorizationToken = request.getHeader(JWTUtil.AUTH_HEADER);
                 if (authorizationToken != null && authorizationToken.startsWith("Bearer ")) {

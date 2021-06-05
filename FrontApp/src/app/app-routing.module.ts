@@ -23,6 +23,10 @@ import {ClientEditComponent} from './components/client-edit/client-edit.componen
 import {ContactDetailComponent} from './components/contact-detail/contact-detail.component';
 import {ProjetDetailComponent} from './components/projet-detail/projet-detail.component';
 import {ProjetPhaseComponent} from './components/projet-phase/projet-phase.component';
+import {UpdateProfilComponent} from './components/user/update-profil/update-profil.component';
+import {FicheTempsComponent} from './components/fiche-temps/fiche-temps.component';
+import {AddFichetempsComponent} from './components/fiche-temps/add-fichetemps/add-fichetemps.component';
+import {AddLigneficheComponent} from './components/lignefiche-temps/add-lignefiche/add-lignefiche.component';
 
 const routes: Routes = [
   {
@@ -52,7 +56,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'listuser', component: ListUserComponent},
-  {path: "", redirectTo:"/login",pathMatch:"full"}
+  {path: 'updateprofil', component: UpdateProfilComponent},
+  {path: "", redirectTo:"/login",pathMatch:"full"},
+  {path: 'addfichetemps',component:AddFichetempsComponent},
+  {path: 'addlignefiche',component:AddLigneficheComponent},
 
 ];
 

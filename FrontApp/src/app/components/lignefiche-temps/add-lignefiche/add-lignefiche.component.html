@@ -1,0 +1,77 @@
+<h1 class="dislay-4">Saisir une tache</h1>
+<hr>
+<form [formGroup]="this.formData"  (ngSubmit)="onSubmit()" *ngIf="formData">
+  <input type="hidden" class="form-control" formControlName="id" id="id">
+  <div class="form-group">
+    <label>Projet </label>
+    <select  class="form-control" formControlName="idProjet" id="idProjet"
+             >
+      <option value="0">-Select-</option>
+      <option *ngFor="let item of projetList" value="{{item.id}}">{{item.titre}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Phase </label>
+    <select  class="form-control" formControlName="idPhase" id="idPhase"
+    >
+      <option value="0">-Select-</option>
+      <option *ngFor="let item of phaseList" value="{{item.id}}">{{item.titre}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Desc </label>
+    <div class="input-group">
+      <input class="hidden" class="form-control" formControlName="desc" id="desc">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Nombre Heure Lundi</label>
+    <div class="input-group">
+      <input name="qte"  class="form-control" formControlName="nbrl" id="nbrl"
+             [class.is-invalid]="!isValid && formData.value.nbrl==0">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Nombre Heure Mardi</label>
+    <div class="input-group">
+      <input name="qte"  class="form-control" formControlName="nbrmar" id="nbrmar"
+             [class.is-invalid]="!isValid && formData.value.nbrmar==0">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Nombre Heure Mercredi</label>
+    <div class="input-group">
+      <input name="qte"  class="form-control" formControlName="nbrmer" id="nbrmer"
+             [class.is-invalid]="!isValid && formData.value.nbrmer==0">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Nombre Heure Jeudi</label>
+    <div class="input-group">
+      <input name="qte"  class="form-control" formControlName="nbrj" id="nbrj"
+             [class.is-invalid]="!isValid && formData.value.nbrj==0">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Nombre Heure Vendredi</label>
+    <div class="input-group">
+      <input name="qte"  class="form-control" formControlName="nbrv" id="nbrv"
+             [class.is-invalid]="!isValid && formData.value.nbrv==0">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Nombre Heure Samedi</label>
+    <div class="input-group">
+      <input name="qte"  class="form-control" formControlName="nbrs" id="nbrs"
+             [class.is-invalid]="!isValid && formData.value.nbrs==0">
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+    <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+  </div>
+
+</form>

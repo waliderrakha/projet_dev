@@ -1,0 +1,90 @@
+
+<form  (ngSubmit)="onSubmit()">
+  <input  type="hidden"  class="form-control" id="lib_client" >
+  <div class="form-group row col-md-12">
+    <div class="form-group col-md-6">
+      <label><strong>Num Commande : </strong></label>
+      <input  type="text"  class="form-control"  id="numero" readonly>
+    </div>
+    <div class="col-md-6 form-group">
+      <label>Date</label>
+      <input  type="date"  class="form-control"   id="date_comm">
+    </div>
+    <div class="col-md-6 form-group">
+      <label>Client</label>
+      <select name="code_client" class="form-control"  id="code_client"
+              >
+        <option value="0">-Select-</option>
+        <option *ngFor="let client of this.ClientList" value="{{client.id}}">{{client.libelle}}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label>Libelle</label>
+      <input class="form-control" id="libelle">
+    </div>
+  </div>
+  <table class="table table-borderless">
+    <thead class="thead-light">
+    <th>Projet</th>
+    <th>Phase</th>
+    <th>Desc</th>
+    <th>Lundi</th>
+    <th>Mardi</th>
+    <th>Mercredi</th>
+    <th>Jeudi</th>
+    <th>Vendredi</th>
+    <th>Samedi</th>
+    <th>
+      <a class="btn btn-sm btn-success text-white"  (click)="AddData(null,1)" >
+
+        <i class="fa fa-plus"></i>Ajouter </a>
+    </th>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let item of ficheservice.list;let i=index;">
+      <td>{{item.desc}}</td>
+      <td>{{item.nbrl}}</td>
+      <td>description 2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+      <td>
+        <a class="btn btn-sm btn-info text-white" >
+          <i class="fas fa-pencil-alt"></i></a>
+        <a class="btn btn-sm btn-danger text-white ml-1">
+          <i class="fa fa-trash"></i></a>
+      </td>
+    </tr>
+
+
+    </tbody>
+  </table>
+  <div class="form-group row">
+    <div class="col-sm-4 mb-3 mb-sm-0">
+      <div class="form-group">
+        <label>Total Ht : </label>
+        <input type="text" class="form-control" id="totht" readonly>
+      </div>
+    </div>
+    <div class="col-sm-4 mb-3 mb-sm-0">
+      <div class="form-group">
+        <label>Total Tva  : </label>
+        <input type="text" class="form-control" id="tottva"  readonly>
+      </div>
+    </div>
+    <div class="col-sm-4 mb-3 mb-sm-0">
+      <div class="form-group">
+        <label>Total TTC : </label>
+        <input type="text" class="form-control" id="totttc"  readonly>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+    <a class="btn btn-outline-dark ml-1" routerLink="/lcomm"><i class="fa fa-plus-square"></i> Liste </a>
+  </div>
+</form>

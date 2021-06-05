@@ -21,4 +21,5 @@ public interface ConsultantRepository extends JpaRepository<Consultant,Long> {
 
 
 
+
 }

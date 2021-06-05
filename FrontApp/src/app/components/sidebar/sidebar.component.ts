@@ -9,6 +9,8 @@ import {AuthService} from '../../services/auth.service';
 export class SidebarComponent implements OnInit {
   // @ts-ignore
   private roles: string;
+  // @ts-ignore
+  public username:string;
   isLoggedIn = false;
   public showAdminBoard = false;
   public showUserBoard = false;
@@ -16,6 +18,8 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+// @ts-ignore
+  this.username=localStorage.getItem("userauth");
     this.userService.loadToken();
      // @ts-ignore
     this.roles=localStorage.getItem("role");

@@ -29,8 +29,10 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+      Bonjour {{username}}
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
+
         <a class="nav-link" data-toggle="dropdown" href="#" style="background-color: white">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
@@ -279,6 +281,30 @@
             </ul>
           </li>
 
+
+          <li class="nav-item has-treeview menu-close">
+            <a href="#" class="nav-link " style="background-color: turquoise;">
+              <i class="nav-icon fas fa-cog"></i>
+              <p style="color: black">
+                Paramettre
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="showAdminBoard">
+                <a routerLink="/register" class="nav-link" style="background-color: gray">
+                  <i class="fas fa-user-plus nav-icon" style="color: white"></i>
+                  <p>Add Compte</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/updateprofil" class="nav-link" style="background-color: gray">
+                  <i class="nav-icon fas fa-cog" style="color: white"></i>
+                  <p>Changer le mot de passe</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

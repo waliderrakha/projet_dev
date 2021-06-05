@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ehtp.pfe.secservice.secr.JWTUtil;
 import ehtp.pfe.secservice.secr.domaine.Message;
@@ -25,6 +26,8 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.databind.node.ObjectNode;
 @CrossOrigin("*")
 @RestController
 public class AccountRestController {
@@ -138,6 +141,41 @@ public class AccountRestController {
         }
         return ResponseEntity.ok(new Message("User registered successfully!"));
         //return new ResponseEntity<Boolean>(HttpStatus.OK);
+
+    }
+
+
+
+    @PostMapping(path="/updatePassword")
+    public ResponseEntity<Boolean> updatePassword( @RequestBody ObjectNode json
+    ){
+        String username;
+        String oldPass;
+        String newPass;
+
+
+        try {
+            username = new ObjectMapper().treeToValue(json.get("username"), String.class);
+            oldPass = new ObjectMapper().treeToValue(json.get("oldPass"), String.class);
+            newPass = new ObjectMapper().treeToValue(json.get("newPass"), String.class);
+            System.out.println(username);
+            System.out.println(oldPass);
+            System.out.println(newPass);
+
+            boolean test = this.accountService.updatePassword(username, oldPass, newPass);
+            System.out.println("anannanana");
+
+            if(test)
+                return new ResponseEntity<Boolean>(test,HttpStatus.OK);
+
+        } catch (JsonProcessingException e) {
+            System.out.println("Parsing Exception!!");
+            e.printStackTrace();
+            return new ResponseEntity<Boolean>(false,HttpStatus.NOT_ACCEPTABLE);
+
+        }
+        return new ResponseEntity<Boolean>(false,HttpStatus.NOT_ACCEPTABLE);
+
 
     }
 

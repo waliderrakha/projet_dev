@@ -13,4 +13,5 @@ public interface AccountService{
     List<AppUser> listUsers();
     public Boolean existsByUsername(String username);
     public Boolean existsByEmail(String email);
+    public Boolean updatePassword(String username, String oldPass, String newPass);
 }

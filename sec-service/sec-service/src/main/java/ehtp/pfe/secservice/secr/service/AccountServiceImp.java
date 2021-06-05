@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class AccountServiceImp implements AccountService{
@@ -62,4 +64,23 @@ public class AccountServiceImp implements AccountService{
     public Boolean existsByEmail(String email) {
         return appUserRepository.existsByEmail(email);
     }
+    @Override
+    public Boolean updatePassword(String username, String oldPass, String newPass)  {
+
+        Optional<AppUser> opt = Optional.ofNullable(appUserRepository.findByUsername(username));
+        AppUser user;
+        if(opt.isPresent()) {
+            user=opt.get();
+            System.out.println();
+            if(passwordEncoder.matches(oldPass,user.getPassword())) {
+                user.setPassword(passwordEncoder.encode(newPass));
+                this.appUserRepository.save(user);
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+
 }

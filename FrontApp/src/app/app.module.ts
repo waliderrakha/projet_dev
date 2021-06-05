@@ -35,8 +35,20 @@ import { ContactEditComponent } from './components/contact-edit/contact-edit.com
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
 import { ProjetDetailComponent } from './components/projet-detail/projet-detail.component';
 import { ProjetPhaseComponent } from './components/projet-phase/projet-phase.component';
+import { UpdateProfilComponent } from './components/user/update-profil/update-profil.component';
+import { FicheTempsComponent } from './components/fiche-temps/fiche-temps.component';
+import { LigneficheTempsComponent } from './components/lignefiche-temps/lignefiche-temps.component';
+import { AddFichetempsComponent } from './components/fiche-temps/add-fichetemps/add-fichetemps.component';
+import { AddLigneficheComponent } from './components/lignefiche-temps/add-lignefiche/add-lignefiche.component';
 
+import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrModule } from 'ngx-toastr';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
+const MATERIAL_MODULES = [MatToolbarModule,
+  MatIconModule
+];
 // @ts-ignore
 @NgModule({
   declarations: [
@@ -69,20 +81,34 @@ import { ProjetPhaseComponent } from './components/projet-phase/projet-phase.com
     ContactEditComponent,
     ContactDetailComponent,
     ProjetDetailComponent,
-    ProjetPhaseComponent
+    ProjetPhaseComponent,
+    UpdateProfilComponent,
+    FicheTempsComponent,
+    LigneficheTempsComponent,
+    AddFichetempsComponent,
+    AddLigneficheComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    NgxPaginationModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        NgxPaginationModule,
 
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+        MatDialogModule,
+        ToastrModule.forRoot(),
+        MatToolbarModule,
+        MatIconModule,
+
+
+    ],
+
+  providers: [{provide: MAT_DIALOG_DATA, useValue: {} ,},
+    { provide: MatDialogRef, useValue: {} }],
+  bootstrap: [AppComponent],
+ // entryComponents: [AddLigneficheComponent],
 })
 export class AppModule {
 }

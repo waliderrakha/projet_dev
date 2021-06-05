@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Collection;
 @Entity
-@Data @AllA @NoArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 public class FicheTemp {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

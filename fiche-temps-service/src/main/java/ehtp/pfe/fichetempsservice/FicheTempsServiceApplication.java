@@ -40,10 +40,10 @@ public class FicheTempsServiceApplication {
 
 
 				FicheTemp f1=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s));
-				FicheTemp f2=ficheTempRepository.save(new FicheTemp(null,2021,12,"nv",null,1L,s));
-				FicheTemp f3=ficheTempRepository.save(new FicheTemp(null,2021,12,"nv",null,1L,s));
-				FicheTemp f4=ficheTempRepository.save(new FicheTemp(null,2021,12,"nv",null,1L,s));
-				FicheTemp f5=ficheTempRepository.save(new FicheTemp(null,2021,12,"nv",null,1L,s));
+				FicheTemp f2=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s));
+				FicheTemp f3=ficheTempRepository.save(new FicheTemp(null,"user",2021,12,"nv",null,1L,s));
+				FicheTemp f4=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s));
+				FicheTemp f5=ficheTempRepository.save(new FicheTemp(null,"user",2021,12,"nv",null,1L,s));
 
 
 				Phase phase=projetRestClient.getPhaseById(1L);
