@@ -7,4 +7,5 @@ export class ficheTemps {
   mois?: number;
   statut?:String;
   lfiches :Array<ligneFiche> =[];
+  tthr?:number;
 }

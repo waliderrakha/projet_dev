@@ -24,8 +24,28 @@
       <input class="hidden" class="form-control" formControlName="desc" id="desc">
     </div>
   </div>
-
+    <div>
+      <select  class="form-control" formControlName="choix"  >
+        <option value="" disabled selected hidden>--Choisir un Jour--</option>
+        <option value="lundi">Lundi</option>
+        <option value="mardi">Mardi</option>
+        <option value="mercredi">Mercredi</option>
+        <option value="jeudi">Jeudi</option>
+        <option value="vendredi">Vendredi</option>
+        <option value="samedi">Samedi</option>
+      </select>
+    </div>
   <div class="form-group">
+  <label>Nombre Heure</label>
+  <div class="input-group">
+    <input name="nbrh"  class="form-control" formControlName="nbrh" id="nbrh"
+           [class.is-invalid]="!isValid && formData.value.nbrh==0">
+  </div>
+</div>
+
+
+
+  <!--<div class="form-group">
     <label>Nombre Heure Lundi</label>
     <div class="input-group">
       <input name="qte"  class="form-control" formControlName="nbrl" id="nbrl"
@@ -67,10 +87,10 @@
              [class.is-invalid]="!isValid && formData.value.nbrs==0">
     </div>
   </div>
-
+-->
 
   <div class="form-group">
-    <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+    <button type="submit" class="btn btn-dark" (click)="cal()"><i class="fa fa-database"></i> Submit</button>
     <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
   </div>
 
