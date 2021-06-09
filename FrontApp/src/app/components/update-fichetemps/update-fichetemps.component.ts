@@ -1,21 +1,21 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog';
-import {AddLigneficheComponent} from '../../lignefiche-temps/add-lignefiche/add-lignefiche.component';
+import {AddLigneficheComponent} from '../lignefiche-temps/add-lignefiche/add-lignefiche.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FichesTempsService} from '../../../services/fichesTemps.service';
-import {LignesficheTempsService} from '../../../services/lignesficheTemps.service';
+import {FichesTempsService} from '../../services/fichesTemps.service';
+import {LignesficheTempsService} from '../../services/lignesficheTemps.service';
 import { ToastrService } from 'ngx-toastr';
-import {ProjetPhaseComponent} from '../../projet-phase/projet-phase.component';
-import {ligneFiche} from '../../../model/ligneFiche.model';
+import {ProjetPhaseComponent} from '../projet-phase/projet-phase.component';
+import {ligneFiche} from '../../model/ligneFiche.model';
 
 @Component({
-  selector: 'app-add-fichetemps',
-  templateUrl: './add-fichetemps.component.html',
-  styleUrls: ['./add-fichetemps.component.scss']
+  selector: 'app-update-fichetemps',
+  templateUrl: './update-fichetemps.component.html',
+  styleUrls: ['./update-fichetemps.component.scss']
 })
-export class AddFichetempsComponent implements OnInit {
+export class UpdateFichetempsComponent implements OnInit {
   ClientList: any;
   isValid:boolean = true;
   username?:string | null;
@@ -29,15 +29,10 @@ export class AddFichetempsComponent implements OnInit {
               private currentRoute: ActivatedRoute,
               @Inject(MAT_DIALOG_DATA) public data: any,
               public dialogRef:MatDialogRef<AddLigneficheComponent>,) { }
-               get f() { // @ts-ignore
-                    return this.ficheservice.formData.controls; }
+  get f() { // @ts-ignore
+    return this.ficheservice.formData.controls; }
 
   ngOnInit(): void {
-    if (this.ficheservice.choixmenu == "A"){
-      this.InfoForm();
-      this.ficheservice.list = [];
-    }
-    else {
       this.InfoForm();
       // @ts-ignore
       this.ficheservice.getfiche(this.ficheservice.idfiche).subscribe(
@@ -59,10 +54,10 @@ export class AddFichetempsComponent implements OnInit {
         response =>{ // @ts-ignore
           this.ficheservice.list = response._embedded.ligneFiches;
           console.log("n3assssssssssssss");
-        console.log(this.ficheservice.list);
+          console.log(this.ficheservice.list);
         }
       );
-    }
+
 
 
 
@@ -91,8 +86,9 @@ export class AddFichetempsComponent implements OnInit {
     console.log("mmmamamammamamamammaamama");
     console.log(this.ficheservice.choixmenu);
     console.log(this.ficheservice.idfiche);
-      this.ficheservice.save(this.ficheservice.formData?.value)
-      .subscribe(data => {
+    // @ts-ignore
+    this.ficheservice.updateFiche(this.ficheservice.formData?.value,this.ficheservice.idfiche)
+      .subscribe( data => {
         alert("Success Saving Client");
       });
     this.router.navigate(["/client"]);

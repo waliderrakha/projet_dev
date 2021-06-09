@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import {Contact} from '../model/contact.model';
 import {Observable} from 'rxjs';
 import {Projet} from '../model/projet.model';
+import {Phase} from '../model/phase.model';
 
 
 @Injectable({providedIn: "root"})
@@ -31,8 +32,18 @@ export class ProjetsServices {
     let host=environment.host2;
     return this.http.get<Projet>(host+"/projets/"+id);
   }
+
+  getPhaseOne(id:number):Observable<Phase>{
+    let host=environment.host2;
+    return this.http.get<Phase>(host+"/phases/"+id);
+  }
+  getPhaseProjet(id:number):Observable<Phase>{
+    let host=environment.host2;
+    return this.http.get<Phase>(host+"/projets/"+id+"/phases");
+  }
   getphase(p:any){
     return this.http.get(p._links.phases.href.replace("{?projection}",""));
 
   }
 }
+

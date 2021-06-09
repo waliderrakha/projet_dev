@@ -45,6 +45,7 @@ import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material
 import { ToastrModule } from 'ngx-toastr';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { UpdateFichetempsComponent } from './components/update-fichetemps/update-fichetemps.component';
 
 const MATERIAL_MODULES = [MatToolbarModule,
   MatIconModule
@@ -86,7 +87,8 @@ const MATERIAL_MODULES = [MatToolbarModule,
     FicheTempsComponent,
     LigneficheTempsComponent,
     AddFichetempsComponent,
-    AddLigneficheComponent
+    AddLigneficheComponent,
+    UpdateFichetempsComponent
   ],
     imports: [
         BrowserModule,

@@ -27,6 +27,7 @@ import {UpdateProfilComponent} from './components/user/update-profil/update-prof
 import {FicheTempsComponent} from './components/fiche-temps/fiche-temps.component';
 import {AddFichetempsComponent} from './components/fiche-temps/add-fichetemps/add-fichetemps.component';
 import {AddLigneficheComponent} from './components/lignefiche-temps/add-lignefiche/add-lignefiche.component';
+import {UpdateFichetempsComponent} from './components/update-fichetemps/update-fichetemps.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,8 @@ const routes: Routes = [
   {path: "", redirectTo:"/login",pathMatch:"full"},
   {path: 'addfichetemps',component:AddFichetempsComponent},
   {path: 'addlignefiche',component:AddLigneficheComponent},
+  {path: 'fichestemps',component:FicheTempsComponent},
+  {path: 'updatefichestemps',component:UpdateFichetempsComponent},
 
 ];
 

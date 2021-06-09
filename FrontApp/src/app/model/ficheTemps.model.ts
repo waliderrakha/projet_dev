@@ -3,9 +3,10 @@ import {ligneFiche} from './ligneFiche.model';
 export class ficheTemps {
   id?:number;
   annee?:number;
-  username?:String;
+  username?:string;
   mois?: number;
-  statut?:String;
-  lfiches :Array<ligneFiche> =[];
-  tthr?:number;
+  statut?:string;
+  lfiche :Array<ligneFiche> =[];
+  tothr?:number;
+
 }

@@ -5,11 +5,12 @@ import ehtp.pfe.fichetempsservice.model.Phase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor @ToString
 public class LigneFiche {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,12 +22,18 @@ public class LigneFiche {
     private  double nbrs;
     private String desc;
     private String statut;
+    private Long idProjet;
+    private Long idPhase;
+    private String projet;
+    private String phase1;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private FicheTemp ficheTemp;
-    private Long idPhase;
     @Transient
     private Phase phase;
+    private double tthr;
+    private double nbrh;
+    private String choix;
 
 
 

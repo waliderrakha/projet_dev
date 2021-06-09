@@ -5,17 +5,18 @@
   <div class="form-group">
     <label>Projet </label>
     <select  class="form-control" formControlName="idProjet" id="idProjet"
-             >
+             (change)="choisirphase($event.target)">
       <option value="0">-Select-</option>
-      <option *ngFor="let item of projetList" value="{{item.id}}">{{item.titre}}</option>
+      <option *ngFor="let item of projetList"  value="{{item.id}}">{{item.titre}}</option>
     </select>
   </div>
-  <div class="form-group">
+  <div class="form-group" *ngIf="phaseList">
     <label>Phase </label>
     <select  class="form-control" formControlName="idPhase" id="idPhase"
+             (change)="choisirphase1($event.target)"
     >
       <option value="0">-Select-</option>
-      <option *ngFor="let item of phaseList" value="{{item.id}}">{{item.titre}}</option>
+      <option *ngFor="let item of phaseList._embedded.phases" value="{{item.id}}">{{item.titre}}</option>
     </select>
   </div>
   <div class="form-group">

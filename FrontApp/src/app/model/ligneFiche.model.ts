@@ -9,6 +9,8 @@ export class ligneFiche {
   desc?: String;
   statut?:String;
   idPhase?:number;
+  phase1?:string;
   idProjet?:number;
-
+  projet?:string;
+  tthr?:number;
 }

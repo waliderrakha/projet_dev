@@ -15,4 +15,5 @@ public interface FicheTempRepository extends JpaRepository<FicheTemp,Long> {
 
     @RestResource(path = "/byusername")
     Page<FicheTemp> findByUsername(@Param("u") String username, Pageable pageable);
+
 }

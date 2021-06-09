@@ -6,6 +6,8 @@ import {ProjetPhaseComponent} from '../../projet-phase/projet-phase.component';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {FichesTempsService} from '../../../services/fichesTemps.service';
 import {ProjetsServices} from '../../../services/projets.service';
+import {Projet} from '../../../model/projet.model';
+import {Phase} from '../../../model/phase.model';
 
 @Component({
   selector: 'app-add-lignefiche',
@@ -19,6 +21,8 @@ export class AddLigneficheComponent implements OnInit {
   isValid:boolean=true;
   wtthr = 0;
   phaseList: any;
+  private projet?: Projet;
+  private phase?: Phase;
 
   constructor(private dialog:MatDialog,
               public dialogRef: MatDialogRef<AddLigneficheComponent>,
@@ -38,6 +42,7 @@ export class AddLigneficheComponent implements OnInit {
     }
     else
     {
+      //this.InfoForm();
       this.formData =this.fb.group(Object.assign({},this.ficheTemps.list[this.data.lcommandeIndex]));
     }
   }
@@ -45,6 +50,8 @@ export class AddLigneficheComponent implements OnInit {
     this.formData = this.fb.group({
       id: null,
       idProjet :0,
+      projet:'',
+      phase1:'',
       idPhase : 0,
       nbrl : 0,
       nbrmar: 0,
@@ -55,7 +62,7 @@ export class AddLigneficheComponent implements OnInit {
       desc :'',
       tthr:0,
       nbrh:0,
-      choix:'',
+     choix:'',
 
     });
   }
@@ -143,5 +150,43 @@ export class AddLigneficheComponent implements OnInit {
     { // @ts-ignore
       this.f['nbrs'].setValue(this.formData?.value.nbrh);
     }
+  }
+
+  choisirphase(item: any) {
+    this.projetService.getProjet(item.value).subscribe(
+      data => {
+        this.projet = data;
+        this.f['projet'].setValue(this.projet?.titre);
+        console.log(this.projet);
+
+      },
+      error => {
+        console.log(error);
+      }
+    )
+    this.projetService.getPhaseProjet(item.value).subscribe(data => {
+        this.phaseList = data;
+        console.log(this.phaseList);
+
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  choisirphase1(item:any) {
+    this.projetService.getPhaseOne(item.value).subscribe(
+      data => {
+        this.phase = data;
+        this.f['phase1'].setValue(this.phase?.titre);
+        console.log(this.phase);
+
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
   }
 }

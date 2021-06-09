@@ -1,0 +1,93 @@
+<div *ngIf="ficheservice.formData">
+  <form  [formGroup]="this.ficheservice.formData" (ngSubmit)="onSubmit()">
+    <input  type="hidden"  class="form-control" id="lib_client" >
+    <div class="form-group row col-md-12">
+      <div class="form-group col-md-6">
+        <label><strong>Annee: </strong></label>
+        <input  type="number"  class="form-control"  id="annee" formControlName="annee"
+                [ngClass]="{'is-invalid':submitted && ficheservice.formData.controls.annee.errors}">
+      </div>
+      <div class="col-md-6 form-group">
+        <label>Mois:</label>
+        <input  type="number"  class="form-control"   id="mois" formControlName="mois"
+                [ngClass]="{'is-invalid':submitted && ficheservice.formData.controls.mois.errors}">
+      </div>
+      <div class="col-md-6 form-group">
+        <label>Semaine</label>
+        <select name="idSemaine" class="form-control"  id="idSemaine"
+        >
+          <option value="0">-Choisir Une Semaine-</option>
+          <option *ngFor="let client of this.ClientList" value="{{client.id}}">{{client.libelle}}</option>
+        </select>
+      </div>
+      <!--<div class="col-md-6">
+        <label>Libelle</label>
+        <input class="form-control" id="libelle">
+      </div>-->
+    </div>
+    <table class="table table-borderless">
+      <thead class="thead-light">
+      <th>Projet</th>
+      <th>Phase</th>
+      <th>Desc</th>
+      <th>Lundi</th>
+      <th>Mardi</th>
+      <th>Mercredi</th>
+      <th>Jeudi</th>
+      <th>Vendredi</th>
+      <th>Samedi</th>
+      <th>
+        <a class="btn btn-sm btn-success text-white"  (click)="AddData(null,1)" >
+
+          <i class="fa fa-plus"></i>Ajouter </a>
+      </th>
+      </thead>
+      <tbody>
+      <tr *ngIf="ficheservice.list.length==0"
+          [class.text-danger]="!isValid && ficheservice.list.length ==0">
+        <td class="font-italic text-center" colspan="5">
+          Aucune Tache saisie ...
+        </td>
+      </tr>
+
+      <tr *ngFor="let item of ficheservice.list;let i=index;">
+        <td>{{item.projet}}</td>
+        <td>{{item.phase1}}</td>
+        <td>{{item.desc}}</td>
+        <td>{{item.nbrl}}</td>
+        <td>{{item.nbrmar}}</td>
+        <td>{{item.nbrmer}}</td>
+        <td>{{item.nbrj}}</td>
+        <td>{{item.nbrv}}</td>
+        <td>{{item.nbrs}}</td>
+        <td>
+          <a class="btn btn-sm btn-info text-white" (click)="AddData(i,1)">
+            <i class="fas fa-pencil-alt"></i></a>
+          <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDelete(item,i)" >
+            <i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+
+
+      </tbody>
+    </table>
+    <div class="form-group row">
+      <div class="col-sm-4 mb-3 mb-sm-0">
+        <div class="form-group">
+          <label>Total Heure Saisie : </label>
+          <input type="text" class="form-control" id="tothr" formControlName="tothr" readonly>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3 mb-sm-0">
+        <div class="form-group">
+          <label>Total Heure Validée : </label>
+          <input type="text" class="form-control" id="tothv"  readonly>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i>Enregistrer</button>
+      <a class="btn btn-outline-dark ml-1" routerLink="/lcomm"><i class="fa fa-plus-square"></i> Liste </a>
+    </div>
+  </form>
+</div>

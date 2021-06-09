@@ -11,6 +11,8 @@ import {FormGroup} from '@angular/forms';
 export class FichesTempsService {
   public list: ligneFiche[]=new Array();
   public formData: FormGroup | undefined;
+  choixmenu : string  = "A";
+  idfiche: number | undefined;
   constructor(private http:HttpClient) {
   }
   getAllFicheTemps(){
@@ -24,4 +26,19 @@ export class FichesTempsService {
   }
 
 
+  save(info: Object) {
+    let host=environment.host3;
+    return this.http.post(host+"/fiches1",info);
+  }
+
+  getfiche(id:number) {
+    let host=environment.host3;
+    return this.http.get(host+"/ficheTemps/"+id);
+  }
+
+  updateFiche(fiche: Object, id: number) {
+    let host=environment.host3;
+    return this.http.post(host+"/updateFiche?id="+id,fiche);
+
+  }
 }

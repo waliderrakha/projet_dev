@@ -4,11 +4,13 @@
   <div class="form-group row col-md-12">
     <div class="form-group col-md-6">
       <label><strong>Annee: </strong></label>
-      <input  type="number"  class="form-control"  id="annee" >
+      <input  type="number"  class="form-control"  id="annee" formControlName="annee"
+              [ngClass]="{'is-invalid':submitted && ficheservice.formData.controls.annee.errors}">
     </div>
     <div class="col-md-6 form-group">
       <label>Mois:</label>
-      <input  type="number"  class="form-control"   id="mois">
+      <input  type="number"  class="form-control"   id="mois" formControlName="mois"
+              [ngClass]="{'is-invalid':submitted && ficheservice.formData.controls.mois.errors}">
     </div>
     <div class="col-md-6 form-group">
       <label>Semaine</label>
@@ -49,8 +51,8 @@
     </tr>
 
     <tr *ngFor="let item of ficheservice.list;let i=index;">
-      <td>{{item.idProjet}}</td>
-      <td>{{item.idPhase}}</td>
+      <td>{{item.projet}}</td>
+      <td>{{item.phase1}}</td>
       <td>{{item.desc}}</td>
       <td>{{item.nbrl}}</td>
       <td>{{item.nbrmar}}</td>

@@ -6,7 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 public class FicheTemp {
@@ -15,11 +18,18 @@ public class FicheTemp {
     private String username;
     private int annee;
     private int mois;
-    private String statut;
+    private String statut="non valide";
     @OneToMany(mappedBy = "ficheTemp")
-    private Collection<LigneFiche> ligneFiches;
+    private List<LigneFiche> lfiche=new ArrayList<>();
     private Long idSeamineConsultant;
     @Transient
     private SemaineConsultant semaineConsultant;
+    private double tothr;
+
+    public FicheTemp(Long id){
+        this.id=id;
+
+    }
+
 
 }

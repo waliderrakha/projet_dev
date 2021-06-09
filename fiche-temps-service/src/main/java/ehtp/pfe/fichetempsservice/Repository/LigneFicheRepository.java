@@ -9,4 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 @CrossOrigin("*")
 public interface LigneFicheRepository extends JpaRepository<LigneFiche,Long> {
+
+    public void deleteByFicheTemp(FicheTemp ficheTemp);
 }

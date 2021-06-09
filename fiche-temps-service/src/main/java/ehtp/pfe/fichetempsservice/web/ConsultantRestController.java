@@ -1,14 +1,20 @@
 package ehtp.pfe.fichetempsservice.web;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
 import ehtp.pfe.fichetempsservice.Repository.FicheTempRepository;
 import ehtp.pfe.fichetempsservice.Repository.LigneFicheRepository;
 import ehtp.pfe.fichetempsservice.entities.FicheTemp;
 import ehtp.pfe.fichetempsservice.fiegn.ConsultantRestClient;
 import ehtp.pfe.fichetempsservice.model.SemaineConsultant;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.json.JsonParseException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
+
 @CrossOrigin("*")
 @RestController
 public class ConsultantRestController {
@@ -35,4 +41,9 @@ public class ConsultantRestController {
 
 
     }
+
+
+
+
+
 }

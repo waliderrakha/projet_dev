@@ -13,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import java.util.Date;
 
@@ -28,9 +29,12 @@ public class FicheTempsServiceApplication {
 	CommandLineRunner start(FicheTempRepository ficheTempRepository,
 							LigneFicheRepository ligneFicheRepository,
 							ConsultantRestClient consultantRestClient,
-							ProjetRestClient projetRestClient
+							ProjetRestClient projetRestClient, RepositoryRestConfiguration restConfiguration
 	){return
 			args -> {
+
+				restConfiguration.exposeIdsFor(FicheTemp.class);
+				restConfiguration.exposeIdsFor(LigneFiche.class);
 				SemaineConsultant s=consultantRestClient.getSemainConsulatantById(1L);
 				System.out.println("----------------------------------------------");
 				System.out.println(s.getConsultant());
@@ -39,11 +43,11 @@ public class FicheTempsServiceApplication {
 				System.out.println(s.getId());
 
 
-				FicheTemp f1=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s));
-				FicheTemp f2=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s));
-				FicheTemp f3=ficheTempRepository.save(new FicheTemp(null,"user",2021,12,"nv",null,1L,s));
-				FicheTemp f4=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s));
-				FicheTemp f5=ficheTempRepository.save(new FicheTemp(null,"user",2021,12,"nv",null,1L,s));
+				FicheTemp f1=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s,12));
+				FicheTemp f2=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s,12));
+				FicheTemp f3=ficheTempRepository.save(new FicheTemp(null,"user",2021,12,"nv",null,1L,s,12));
+				FicheTemp f4=ficheTempRepository.save(new FicheTemp(null,"admin",2021,12,"nv",null,1L,s,12));
+				FicheTemp f5=ficheTempRepository.save(new FicheTemp(null,"user",2021,12,"nv",null,1L,s,12));
 
 
 				Phase phase=projetRestClient.getPhaseById(1L);
@@ -55,16 +59,15 @@ public class FicheTempsServiceApplication {
 				System.out.println(phase.getProjet());
 
 
-				LigneFiche l1=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",f2,1L,null));
-				LigneFiche l2=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",f1,1L,null));
-				LigneFiche l3=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",f3,2L,null
-				));
-				LigneFiche l4=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",f4,2L,null));
+				LigneFiche l1=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",1L,1L,"projet1","dev",f2,null,1D,2,"lundi"));
+				LigneFiche l2=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",1L,1L,"projet1","dev",f1,null,1D,2,"lundi"));
+				LigneFiche l3=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",1L,1L,"projet1","dev",f3,null,1D,2,"lundi"));
+				LigneFiche l4=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",1L,1L,"projet1","dev",f4,null,1D,2,"lundi"));
 
-				LigneFiche l5=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",f2,2L,null));
-				LigneFiche l6=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",f1,1L,null));
-				LigneFiche l7=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",f3,2L,null));
-				LigneFiche l8=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",f4,1L,null));
+				LigneFiche l5=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",1L,1L,"projet1","dev",f2,null,1D,2,"lundi"));
+				LigneFiche l6=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",1L,1L,"projet1","dev",f1,null,1D,2,"lundi"));
+				LigneFiche l7=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",1L,1L,"projet1","dev",f3,null,1D,2,"lundi"));
+				LigneFiche l8=ligneFicheRepository.save(new LigneFiche(null,6,3,5,6,6,8,"tache1","nv",1L,1L,"projet1","dev",f4,null,1D,2,"lundi"));
 
 				ligneFicheRepository.findAll().forEach(c
 						->{System.out.println(c.getDesc());}

@@ -264,15 +264,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a routerLink="addprojet" class="nav-link" style="background-color: gray">
+                <a routerLink="addfichetemps" class="nav-link" style="background-color: gray">
                   <i class="fas fa-plus-square nav-icon" style="color: white"></i>
                   <p>Add Fiche de temps
 
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a routerLink="addphase" class="nav-link " style="background-color: gray">
+              <li class="nav-item" *ngIf="showAdminBoard">
+                <a routerLink="fichestemps" class="nav-link " style="background-color: gray">
                   <i class="fas fa-plus-square nav-icon" style="color: white"></i>
                   <p>List Fiche de temps</p>
                 </a>
